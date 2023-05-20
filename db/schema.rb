@@ -85,7 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_130535) do
     t.boolean "admin"
     t.string "address"
     t.date "birthday"
-    t.bigint "group_id", default: 0
+    t.bigint "group_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["group_id"], name: "index_users_on_group_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
