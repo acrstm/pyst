@@ -5,4 +5,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :groups do
+    collection do
+      get :join
+    end
+  end
+
+
+  get "options", to: "pages#options"
+
 end
