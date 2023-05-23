@@ -12,10 +12,12 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+
     # @user = current_user
     # @task.user = @user
 
     @task.save
+
     redirect_to tasks_path(@task)
   end
 

@@ -9,12 +9,13 @@ Rails.application.routes.draw do
     collection do
       get :join
     end
+    resources :tasks, only: [:index, :new, :create, :show]
   end
 
-  resources :tasks, only: [:index, :new, :create, :show]
+
 
   get "options", to: "pages#options"
   # get  "group", to: "groups#show"
-  post "new_task", to: "tasks#create" # Alam asks Adam if he needs to create the post route separate
+ 
 
 end
