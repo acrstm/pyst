@@ -16,7 +16,5 @@ Rails.application.routes.draw do
 
   get "options", to: "pages#options"
   # get  "group", to: "groups#show"
- 
-
 
 end
