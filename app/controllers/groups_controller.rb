@@ -26,11 +26,6 @@ def group_params
 end
 
 
-
-
-
-
-
   def join
 
   end
