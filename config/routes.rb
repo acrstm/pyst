@@ -9,11 +9,14 @@ Rails.application.routes.draw do
     collection do
       get :join
     end
+    resources :tasks, only: [:index, :new, :create, :show]
   end
+
 
 
   get "options", to: "pages#options"
   # get  "group", to: "groups#show"
+ 
 
 
 end
