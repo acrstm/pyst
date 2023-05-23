@@ -7,4 +7,8 @@ class PagesController < ApplicationController
   def options
 
   end
+
+  def overview
+
+  end
 end
