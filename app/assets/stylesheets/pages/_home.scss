@@ -1,1 +1,28 @@
 // Specific CSS for your home-page
+
+.frames{
+  width: 354px;
+  height: 145px;
+  // border: 1px solid black;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  background-color: $salmon;
+}
+.title{
+  text-align: center;
+}
+.center-frames{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+  body{
+    background-color: $light-gray;
+    overflow-x: hidden;
+    max-width: 100%;
+  }
