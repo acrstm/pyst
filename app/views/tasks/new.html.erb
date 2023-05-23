@@ -1,6 +1,6 @@
 <h1>Here you can create a new Task</h1>
 
-<%= simple_form_for @task do |f| %>
+<%= simple_form_for [@group,@task] do |f| %>
   <%= f.input :name %>
   <%= f.association :user, label_method: :id %>
   <%= f.input :done %>
@@ -12,4 +12,4 @@
   <%= f.submit %>
 <% end %>
 
-<%= link_to "Tasks Dashboard", tasks_path %>
+<%# <%= link_to "Tasks Dashboard", group_tasks_path %> %>
