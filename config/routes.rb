@@ -11,12 +11,11 @@ Rails.application.routes.draw do
     end
     resources :tasks, only: [:index, :new, :create, :show]
   end
-
-
+  resources :tasks, only: [:index, :new, :create, :show]
 
   get "options", to: "pages#options"
   # get  "group", to: "groups#show"
- 
+
 
 
 end
