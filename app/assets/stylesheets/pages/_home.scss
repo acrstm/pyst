@@ -13,6 +13,7 @@
 }
 .title{
   text-align: center;
+  color: $orange;
 }
 .center-frames{
     display: flex;
@@ -25,4 +26,5 @@
     background-color: $light-gray;
     overflow-x: hidden;
     max-width: 100%;
+    color: $orange;
   }
