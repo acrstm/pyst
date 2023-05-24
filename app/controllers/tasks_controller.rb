@@ -19,8 +19,11 @@ class TasksController < ApplicationController
     # @task.user = @user
 
     @task.save
+   redirect_to group_task_path([@group], [@task]) # group_id task_id
+  end
 
-    redirect_to group_task_path(@group, @task) # group_id task_id
+  def show
+    @task = Task.find(params[:id])
   end
 
   private
@@ -29,7 +32,5 @@ class TasksController < ApplicationController
     params.require(:task).permit(:name, :user_id, :done, :urgent, :comments, :deadline, :recurrence, :recurring)
   end
 
-  def show
 
-  end
 end

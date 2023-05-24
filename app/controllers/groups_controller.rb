@@ -1,5 +1,10 @@
 class GroupsController < ApplicationController
 
+
+  def index
+    @groups = Group.all
+  end
+
   def new
     @group = Group.new
   end
@@ -16,20 +21,14 @@ class GroupsController < ApplicationController
     @group.save
     @user.group_id = @group.id
     @user.save
-    redirect_to group_path(@group)
+    redirect_to groups_path(@group)
 end
 
 
 
 def group_params
-  params.require(:group).permit(:name)
+  params.require(:group).permit(:name, :description)
 end
-
-
-
-
-
-
 
   def join
 

@@ -9,7 +9,9 @@
   <%= f.input :deadline %>
   <%= f.input :recurring %>
   <%= f.input :recurrence %>
-  <%= f.submit %>
+  <%= f.submit :class => "btn btn-primary" %>
 <% end %>
 
-<%# <%= link_to "Tasks Dashboard", group_tasks_path %> %>
+<div>
+  <%= link_to "See all tasks", group_tasks_path, :class => "btn btn-primary" %>
+</div>
