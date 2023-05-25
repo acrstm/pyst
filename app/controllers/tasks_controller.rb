@@ -8,6 +8,7 @@ class TasksController < ApplicationController
   def new
     @group = Group.find(params[:group_id])
     @task = Task.new # Needed to instantiate the form_with
+
   end
 
 
@@ -19,7 +20,8 @@ class TasksController < ApplicationController
     # @task.user = @user
 
     @task.save
-   redirect_to group_task_path([@group], [@task]) # group_id task_id
+
+   redirect_to group_task_path(@group, @task) # group_id task_id
   end
 
   def show

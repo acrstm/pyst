@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get :join
     end
     resources :tasks, only: [:index, :new, :create, :show]
+    resources :shopping_lists, only: [:index, :new, :create, :show]
   end
 
 
