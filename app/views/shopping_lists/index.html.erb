@@ -1,10 +1,13 @@
 <h1>Shoppings index</h1>
 
-<div class="frames">
- <% @product.each do |product| %>
-  <%= product.name %>
-  <%= product.price %>
- <% end %>
+<%= simple_form_for :user do |f| %>
 
-</div>
+  <%= f.input :category,
+            as: :check_boxes,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            input_html: {class: 'category-selector', multiple: true },
+            collection: @product %>
 
+<% end %>
