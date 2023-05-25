@@ -1,16 +1,10 @@
 <h3>Tasks</h3>
 
-
-<ul>
+<%= link_to "Create new Task", new_group_task_path %>
+<ul class="mb-5">
   <% @tasks.each do |task| %>
     <li><%= task.name %></li>
     <li><%= task.deadline %></li>
-    <li><%= task.assigned_to_id %></li>
-
+    <li><%= task.user.email %></li>
   <% end %>
 </ul>
-
-
-
-
-<%= link_to "Create new Task", new_group_task_path %>

@@ -2,7 +2,7 @@
 
 <%= simple_form_for [@group,@task] do |f| %>
   <%= f.input :name %>
-  <%= f.association :user, label_method: :id %>
+  <%= f.association :user, label_method: :id, required: true%>
   <%= f.input :done %>
   <%= f.input :urgent %>
   <%= f.input :comments %>
