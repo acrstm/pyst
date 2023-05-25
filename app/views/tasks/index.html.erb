@@ -1,10 +1,25 @@
-<h3>Tasks</h3>
+<div class="d-flex flex-column justify-content-between">
+  <h3>Manage your tasks</h3>
 
-<%= link_to "Create new Task", new_group_task_path %>
-<ul class="mb-5">
-  <% @tasks.each do |task| %>
-    <li><%= task.name %></li>
-    <li><%= task.deadline %></li>
-    <li><%= task.user.email %></li>
+  <%= link_to new_group_task_path do %>
+    <i class="fa-solid fa-square-plus fa-2xl" style="color:#DF6C4F"></i>
   <% end %>
-</ul>
+
+
+  <h2>Upcoming</h2>
+    <ul class="mb-5">
+      <% @upcoming_tasks.each do |task| %>
+        <li><%= task.name %>
+        <%= task.deadline %>
+        <%= task.user_id %>
+      <% end %>
+    </ul>
+  <h2>Backlog</h2>
+    <ul class="mb-5">
+      <% @missed_tasks.each do |task| %>
+        <li><%= task.name %></li>
+        <%= task.deadline %>
+        <%= task.user.first_name %></li>
+      <% end %>
+    </ul>
+</div>
