@@ -1,3 +1,10 @@
+<h1>Shoppings index</h1>
 
+<div class="frames">
+ <% @product.each do |product| %>
+  <%= product.name %>
+  <%= product.price %>
+ <% end %>
 
-<h1>Shopping list index</h1>
+</div>
+

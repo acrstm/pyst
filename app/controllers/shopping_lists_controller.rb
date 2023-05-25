@@ -1,6 +1,8 @@
 class ShoppingListsController < ApplicationController
 
   def index
-    # @shoppings = Shopping.all
+    # raise
+    @shoppings = ShoppingList.all
+    @product = Product.all
   end
 end
