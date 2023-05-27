@@ -3,5 +3,8 @@ class BoughtItemsController < ApplicationController
     @shopping = ShoppingList.all
     @product = Product.all
     @user = User.all
+    # raise
   end
+
+
 end

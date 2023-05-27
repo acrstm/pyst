@@ -2,19 +2,30 @@ class ShoppingListsController < ApplicationController
 
   def index
     # raise
-    @shoppings = ShoppingList.all
+    @shopping_list = ShoppingList.all
     @product = Product.all
+    
   end
 
   def new
-    # @selected_products = params[:category][:category].drop(1)
-
-    # @products = @selected_products.map do |id|
-    #   Product.find(id)
-
-    # end
+    @shopping_list = ShoppingList.new
+    @selected_products = params[:category][:category].drop(1)
+    @products = @selected_products.map do |id|
+      Product.find(id)
+    end
+    # raise
   end
 
+  def create
+    @shopping_list = ShoppingList(shopping_params)
+    raise
+  end
+
+  private
+
+  def shopping_params
+    params.require(:shopping_list).permit(:category, :category)
+  end
   # def create
   #   @chosen_products = params[:products]
   #   # @products = @chosen_products.map do |id|
