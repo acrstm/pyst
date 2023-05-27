@@ -1,3 +1,12 @@
 <h1>Shopping list Overview(New)</h1>
-<p>Here it goes another form with list chosen products</p>
-<%= link_to "Confirm choices", group_shopping_list_path(:group_id, :id) %>
+
+<% @products.each do |product| %>
+  <%= product.name %>
+  <%= simple_form_for :category,  method: :get do |f|%>
+    <%= f.input :quantity, collection: 1..9, selected: 1%>
+<%=f.submit "Confirm Basket", :class => 'btn btn-outline-dark'%>
+<% end %>
+<% end %>
+
+
+<%= link_to "Confirm choices", group_shopping_lists_path(:group_id, products: @products), data: {turbo_method: :post} %>
