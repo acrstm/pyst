@@ -1,6 +1,6 @@
 <h1>Here you can create a new Task</h1>
 
-<%= simple_form_for [@group,@task] do |f| %>
+<%= simple_form_for [@group, @task] do |f| %>
   <%= f.input :name, required: true%>
   <%= f.association :user, label_method: :id, required: true%>
   <%= f.input :done %>

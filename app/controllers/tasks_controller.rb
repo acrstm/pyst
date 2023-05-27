@@ -6,7 +6,8 @@ class TasksController < ApplicationController
 
     @upcoming_tasks = Task.where("deadline > ?", Date.today)
     @missed_tasks = Task.where("deadline < ?", Date.today)
-    
+    # @my_date = Date.parse(Date.today).strftime("%d/%m/%Y")
+
   end
 
   def new
