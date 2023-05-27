@@ -1,10 +1,16 @@
-<h3>Tasks</h3>
 
-<%= link_to "Create new Task", new_group_task_path %>
-<ul class="mb-5">
-  <% @tasks.each do |task| %>
-    <li><%= task.name %></li>
-    <li><%= task.deadline %></li>
-    <li><%= task.user.email %></li>
+<h3>Manage your tasks</h3>
+<div class="d-flex align-items-center flex-column">
+  <%= link_to new_group_task_path do %>
+    <i class="fa-solid fa-square-plus fa-2xl" style="color:#DF6C4F" class="align-center"></i>
   <% end %>
-</ul>
+
+
+
+  <p>Upcoming </p>
+    <%= render "shared/card_tasks_up_index" %>
+
+  <p>Backlog</p>
+    <%= render "shared/card_tasks_back_index" %>
+
+ </div>

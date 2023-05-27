@@ -3,10 +3,15 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.all
+
+    @upcoming_tasks = Task.where("deadline > ?", Date.today)
+    @missed_tasks = Task.where("deadline < ?", Date.today)
+    # @my_date = Date.parse(Date.today).strftime("%d/%m/%Y")
+
   end
 
   def new
-    @group = Group.find(params[:group_id])
+    @group = Group.find(current_user.group_id)
     @task = Task.new # Needed to instantiate the form_with
 
   end

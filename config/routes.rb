@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :tasks, only: [:index, :new, :create, :show]
     resources :shopping_lists, only: [:index, :new, :create, :show]
     resources :bought_items, only: [:index, :new, :create, :show]
+    resources :fixed_costs, only: [:index, :new, :create, :show]
   end
 
 
