@@ -1,23 +1,16 @@
 
-  <h3>Manage your tasks</h3>
-
+<h3>Manage your tasks</h3>
+<div class="d-flex align-items-center flex-column">
   <%= link_to new_group_task_path do %>
-    <i class="fa-solid fa-square-plus fa-2xl" style="color:#DF6C4F" ></i>
+    <i class="fa-solid fa-square-plus fa-2xl" style="color:#DF6C4F" class="align-center"></i>
   <% end %>
 
 
-  <h2>Upcoming</h2>
-    <div class="container d-flex justifycontent-between">
-      <% @upcoming_tasks.each do |task| %>
-        <div class="row"><li><%= task.name %> <%= task.deadline %> <%= task.user_id %></div>
-      <% end %>
-    </div>
 
+  <p>Upcoming </p>
+    <%= render "shared/card_tasks_up_index" %>
 
-  <h2>Backlog</h2>
+  <p>Backlog</p>
+    <%= render "shared/card_tasks_back_index" %>
 
-      <% @missed_tasks.each do |task| %>
-          <div class="container d-flex justifycontent-between">
-        <div class="row"><li><%= task.name %> <%= task.deadline %> <%= task.user_id %></div>
-            </div>
-      <% end %>
+ </div>

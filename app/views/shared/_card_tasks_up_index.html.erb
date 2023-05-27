@@ -1,0 +1,11 @@
+   <div class="container row d-flex justifycontent-between">
+    <% @upcoming_tasks.each do |task| %>
+      <div class="card_tasks_up_index">
+        <div><%= task.name %></div>
+        <div><%= task.deadline.strftime("%d.%m.%Y") %></div>
+        <div><%= task.user_id %></div>
+        <div><%= render "shared/current_user_index_avatar" %></div>
+      </div>
+    <% end %>
+
+  </div>
