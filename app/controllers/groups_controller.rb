@@ -22,7 +22,7 @@ class GroupsController < ApplicationController
     @user.group_id = @group.id
     @user.save
     redirect_to groups_path(@group)
-end
+  end
 
 private 
 

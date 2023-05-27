@@ -1,7 +1,7 @@
 <h1>Shoppings index</h1>
-<div class="frame-index">
 
-<%= simple_form_for :category, url: new_group_shopping_list_path(), method: :get do |f| %>
+<div class="frame-index">
+<%= simple_form_for :category, url: new_group_shopping_list_path(group_id: current_user.group_id), method: :get do |f| %>
 
   <%= f.input :category,
             as: :check_boxes,
@@ -10,10 +10,7 @@
             item_wrapper_class: 'category-item',
             input_html: {class: 'category-selector', multiple: true },
             collection: @product %>
-
+</div>
 <%=f.submit "Check Basket", :class => 'btn btn-outline-dark'%>
 
 <% end %>
-
-
-</div>
