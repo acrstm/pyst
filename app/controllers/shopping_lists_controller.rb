@@ -7,12 +7,12 @@ class ShoppingListsController < ApplicationController
   end
 
   def new
-    @selected_products = params[:category][:category].drop(1)
+    # @selected_products = params[:category][:category].drop(1)
 
-    @products = @selected_products.map do |id|
-      Product.find(id)
+    # @products = @selected_products.map do |id|
+    #   Product.find(id)
 
-    end
+    # end
   end
 
   # def create

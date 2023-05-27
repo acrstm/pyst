@@ -4,7 +4,7 @@
   <%= product.name %>
   <%= simple_form_for :category,  method: :get do |f|%>
     <%= f.input :quantity, collection: 1..9, selected: 1%>
-<%=f.submit "Confirm Basket", :class => 'btn btn-outline-dark'%>
+    <%=f.submit "Confirm Basket", :class => 'btn btn-outline-dark'%>
 <% end %>
 <% end %>
 
