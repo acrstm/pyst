@@ -2,8 +2,8 @@
 
 <%= simple_form_for [@group, @fixed_cost] do |f| %>
   <%= f.input :name, required: true%>
-  <%= f.association :user, label_method: :id, required: true%>
-  <%= f.input :comments %>
-  <%= f.input :price %>
-  <%= f.submit :class => "btn btn-primary" %>
+  <%= f.association :user, label_method: :id%>
+  <%= f.input :comments%>
+  <%= f.input :price, required: true%>
+  <%= f.submit :class => "btn btn-primary"%>
 <% end %>
