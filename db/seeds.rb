@@ -25,6 +25,7 @@ Product.create(name: "Tomatoe", price: "0.25")
 Product.create(name: "Orange Juice", price: "1.5")
 Product.create(name: "Coffee beans", price: "5.4")
 Product.create(name: "Beer", price: "0.9")
+Product.create(name: "Brocoli", price: "1.3")
 # puts 'Creating 30 Basic products...'
 # 10.times do
 #   product = Product.new(
