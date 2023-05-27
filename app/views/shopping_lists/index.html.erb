@@ -1,8 +1,9 @@
 <h1>Shoppings index</h1>
+<div class="frame-index">
 
 <%= simple_form_for :user do |f| %>
 
-  <%= f.input :category,
+  <%= f.input :Category,
             as: :check_boxes,
             collection_wrapper_tag: 'div',
             collection_wrapper_class: 'category-wrapper',
@@ -11,3 +12,8 @@
             collection: @product %>
 
 <% end %>
+</div>
+
+<div class="check-basket">
+  <%= link_to "Check Basket", new_group_shopping_list_path(:group_id) %>
+</div>
