@@ -1,13 +1,53 @@
 .card_tasks_up_index {
-  background-color: white;
-  padding: 20px 0;
+  // background-color: white;
+  padding: 10px 0;
   color: $salmon;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  // align-items: center;
   border-radius: 20px;
   margin-top: 5px;
   height: 40px;
+  width: 100%;
+  overflow: hidden;
+
+  .card-a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    background-color: white;
+    border-radius: 20px;
+    height: 35px;
+  }
+
+  .card-b{
+    display: flex;
+    align-items: center;
+    width: 55%;
+    background-color: white;
+    border-radius: 20px;
+    height: 35px;
+  }
+
+  .card-c{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    background-color: white;
+    border-radius: 20px;
+    height: 35px;
+    align-content: center;
+  }
+
+  .card-d{
+    width: 10%;
+    align-content: end;
+    border-radius: 20px;
+    height: 40px;
+
+  }
 }
 
 .text_tasks_index {
