@@ -20,11 +20,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: #ffffff;
+    text-decoration: none;
 }
 
   body{
     background-color: $light-gray;
     overflow-x: hidden;
     max-width: 100%;
-    color: $orange;
+    color: white;
+  }
+
+  .tasks-titles {
+      color: #ffffff;
+      text-decoration: none;
   }
