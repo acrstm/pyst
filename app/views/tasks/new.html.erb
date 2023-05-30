@@ -1,17 +1,19 @@
 <h1>Here you can create a new Task</h1>
 
 <%= simple_form_for [@group, @task] do |f| %>
-  <%= f.input :name, required: true%>
-  <%= f.association :user, label_method: :id, required: true%>
+  <%= f.input :name, placeholder: "e.g. Clean something", required: true%>
+  <%= f.association :user, label_method: :id, placeholder: "Marie Jane", required: true%>
   <%= f.input :done %>
   <%= f.input :urgent %>
   <%= f.input :comments %>
   <%= f.input :deadline, required: true%>
   <%= f.input :recurring %>
-  <%= f.input :recurrence %>
+
+  <%= f.input :recurrence  if :recurring == true %>
+
   <%= f.submit :class => "btn btn-primary" %>
 <% end %>
 
 <div>
-  <%= link_to "See all tasks", group_tasks_path, :class => "btn btn-primary" %>
+  <%= link_to "See all tasks", group_tasks_path, :class => "btn btn-primary mt-1" %>
 </div>
