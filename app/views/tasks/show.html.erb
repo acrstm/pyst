@@ -1,10 +1,15 @@
 <h1>Here you can see your new created task</h1>
 
-<h2><%= @task.name %></h2>
-<p><%= @task.assigned_to_id %></p>
-<p><%= @task.comments %></p>
-<p><%= @task.deadline %></p>
+  <div class="container tasks_index_bg_card d-flex">
+    <div class="d-flex" >
+      <p><%= @task.deadline %></p>     <p><%= @task.assigned_to_id %></p>
+      </div>
+    <h2><%= @task.name %></h2>
 
-<div>
-  <%= link_to "See all tasks", group_tasks_path, :class => "btn btn-primary" %>
-</div>
+    <p><%= @task.comments %></p>
+  </div>
+  <div>
+
+  <div>
+    <%= link_to "See all tasks", group_tasks_path, :class => "btn btn-primary" %>
+  </div>
