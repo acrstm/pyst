@@ -1,104 +1,160 @@
-// .container{
-//   // width: 120px;
-//   // height: 90px;
-//   // display: grid;
-//   // grid-template-columns: 1fr 1fr 1fr 1fr;
-//   // grid-gap: 16px;
-//   // border: 1px solid black;
+// // .container{
+// //   // width: 120px;
+// //   // height: 90px;
+// //   // display: grid;
+// //   // grid-template-columns: 1fr 1fr 1fr 1fr;
+// //   // grid-gap: 16px;
+// //   // border: 1px solid black;
+// //   display: grid;
+// //   grid-template-columns: 1fr 1fr 1fr 1fr;
+// //   grid-gap:26px;
+// //   border: 1px solid black;
+// // }
+
+// .product_grid{
 //   display: grid;
-//   grid-template-columns: 1fr 1fr 1fr 1fr;
-//   grid-gap:26px;
-//   border: 1px solid black;
+//   grid-template-columns: 1fr 1fr 1fr;
+//   grid-gap: 16px;
+
+//   .product_card{
+//     background-color: white;
+//   }
 // }
 
-.product_grid{
+// .category-wrapper {
+//   display: grid;
+//   justify-content: center;
+//   // flex-direction: column;
+//   flex-wrap: wrap;
+// }
+
+// .category-item {
+//   flex: 0 0 30%;
+// }
+
+// .category-selector {
+//   position: absolute;
+//   transform: scale(0);
+// }
+
+// .category-selector + label {
+//   display: block;
+//   cursor: pointer;
+//   box-sizing: border-box;
+//   width: 100%;
+//   font-size: 12px;
+//   text-align: center;
+//   padding: 10px 10px 20px 10px;
+//   border: 1px solid #EAEAEA;
+//   border-radius: 9px;
+//   background-color: #FF9398;
+//   transition: 0.5s all;
+//   // filter: drop-shadow(30px 10px 4px)
+// }
+
+// .category-selector:checked + label {
+//   color: white !important;
+//   background-color: #FF937C;
+//   transform: scale(0.98);
+//   transition: 0.5s all;
+// }
+
+
+// #snippet_category_ruby + label {
+//   color: #FD1015;
+// }
+
+// #snippet_category_ruby:checked + label {
+//   background-color: #FD1015;
+//   border-color: #FD1015;
+// }
+
+
+// #snippet_category_javascript + label {
+//   color: #FFC65A;
+// }
+
+// #snippet_category_javascript:checked + label {
+//   background-color: #FFC65A;
+//   border-color: #FFC65A;
+// }
+
+
+// #snippet_category_css + label {
+//   color: #62DDF5;
+// }
+
+// #snippet_category_css:checked + label {
+//   background-color: #62DDF5;
+//   border-color: #62DDF5;
+// }
+
+
+
+//   .frame-index{
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: center;
+  //     margin-top: 90px;
+  //   }
+.container-form{
+  margin-top: 150px;
+}
+.container-basket{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    margin-top: 100px;
+  }
+
+.category-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
-
-  .product_card{
-    background-color: white;
-  }
+  overflow-y: scroll;
+  height: 384px;
 }
-
-.category-wrapper {
-  display: flex;
-  justify-content: center;
-  // flex-direction: column;
-  flex-wrap: wrap;
-}
-
 .category-item {
-  flex: 0 0 30%;
+// flex: 0 0 30%;
+position: relative;
+width: 100%;
+  height: 100%;
+  margin-bottom: 5em !important;
 }
-
 .category-selector {
-  position: absolute;
-  transform: scale(0);
-}
-
-.category-selector + label {
-  display: block;
-  cursor: pointer;
-  box-sizing: border-box;
+position: absolute;
+padding: 30px;
   width: 100%;
-  font-size: 12px;
-  text-align: center;
-  padding: 10px 10px 20px 10px;
-  border: 1px solid #EAEAEA;
-  border-radius: 9px;
+  height: 100%;
+  background-size: 20px;
   background-color: #FF9398;
-  transition: 0.5s all;
-  // filter: drop-shadow(30px 10px 4px)
+// transform: scale(0);
 }
-
+.category-selector + label {
+ position: absolute;
+// display: block;
+// cursor: pointer;
+// box-sizing: border-box;
+width: 100%;
+font-size: 17px;
+text-align: center;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: top;
+padding-top: 7px;
+transition: 0.5s all;
+// padding: 10px 10px 30px 10px;
+// border: 1px solid #EAEAEA;
+// border-radius: 8px;
+// // background: url('https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2019%2F04%2F11%2FGettyImages-180341886-2000.jpg&q=60') center no-repeat;
+// background-size: cover;
+}
 .category-selector:checked + label {
-  color: white !important;
-  background-color: #FF937C;
-  transform: scale(0.98);
-  transition: 0.5s all;
-}
-
-
-#snippet_category_ruby + label {
-  color: #FD1015;
-}
-
-#snippet_category_ruby:checked + label {
-  background-color: #FD1015;
-  border-color: #FD1015;
-}
-
-
-#snippet_category_javascript + label {
-  color: #FFC65A;
-}
-
-#snippet_category_javascript:checked + label {
-  background-color: #FFC65A;
-  border-color: #FFC65A;
-}
-
-
-#snippet_category_css + label {
-  color: #62DDF5;
-}
-
-#snippet_category_css:checked + label {
-  background-color: #62DDF5;
-  border-color: #62DDF5;
-}
-
-.frame-index{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 90px;
-}
-
-.check-basket{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 30px;
+opacity: 0.5;
+width: 100%;
+height: 100%;
+background-color: rgb(21, 20, 20);
+border-radius: 13px;
 }
