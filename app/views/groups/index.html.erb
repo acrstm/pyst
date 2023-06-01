@@ -1,8 +1,17 @@
-<ul>
-  <% @groups.each do |group| %>
-    <li><%= group.name %></li>
-    <li><%= group.description %></li>
-  <% end %>
-</ul>
+<div class="d-flex align-items-center flex-column">
 
-<%= link_to "Create new Group", new_group_path %>
+  <h3>Groups</h3>
+  <%= link_to new_group_path do %>
+      <div class="container">
+        <i class="fa-solid fa-square-plus fa-2xl" style="color:#DF6C4F" class="align-center" ></i>
+      </div>
+  <% end %>
+
+
+    <div class="container tasks_index_bg_card">
+      <%= render "groups/card_groups_index" %>
+    </div>
+
+  </div>
+
+</div>

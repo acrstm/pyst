@@ -1,0 +1,11 @@
+
+   <div class="container row d-flex justifycontent-between">
+   <% @groups.each do |group| %>
+      <div class="card_tasks_up_index">
+        <div class="card-a"><%= group.photo.key %></div>
+        <div class="card-b"><%= group.name %></div>
+        <div class="card-c"><%= group.description %></div>
+      </div>
+    <% end %>
+
+  </div>
