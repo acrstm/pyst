@@ -1,0 +1,9 @@
+<h2>Add your Expense</h2>
+
+<%= simple_form_for [@group, @fixed_cost] do |f| %>
+  <%= f.input :name, required: true%>
+  <%= f.association :user, label_method: :id%>
+  <%= f.input :comments%>
+  <%= f.input :price, required: true%>
+  <%= f.submit :class => "btn btn-primary"%>
+<% end %>

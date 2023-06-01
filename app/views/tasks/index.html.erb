@@ -1,16 +1,22 @@
 
-<h3>Manage your tasks</h3>
+
 <div class="d-flex align-items-center flex-column">
+
+  <h3>Manage your tasks</h3>
   <%= link_to new_group_task_path do %>
-    <i class="fa-solid fa-square-plus fa-2xl" style="color:#DF6C4F" class="align-center"></i>
+      <div class="container">
+        <i class="fa-solid fa-square-plus fa-2xl" style="color:#DF6C4F" class="align-center" ></i>
+      </div>
   <% end %>
 
 
-
   <p>Upcoming </p>
-    <%= render "shared/card_tasks_up_index" %>
+  <div class="container tasks_index_bg_card">
+    <%= render "shared/card_tasks_up_index"%>
+  </div>
 
   <p>Backlog</p>
-    <%= render "shared/card_tasks_back_index" %>
-
+    <div class="container tasks_index_bg_card">
+      <%= render "shared/card_tasks_back_index" %>
+    </div>
  </div>

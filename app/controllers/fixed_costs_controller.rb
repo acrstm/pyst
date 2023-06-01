@@ -3,14 +3,22 @@ class FixedCostsController < ApplicationController
     @fixed_costs = FixedCost.all
   end
 
+  def new
+    @group = Group.find(current_user.group_id)
+    @fixed_cost = FixedCost.new
+  end
+
   def create
     @fixed_cost = FixedCost.new(fixed_cost_params)
     @group = Group.find(params[:group_id])
     @fixed_cost.group = @group
-
     @fixed_cost.save
 
-    redirect_to group_task_path(@group, @fixed_cost)
+    redirect_to group_fixed_cost_path(@group, @fixed_cost)
+  end
+
+  def show
+    @fixed_cost = FixedCost.find(params[:id])
   end
 
   private

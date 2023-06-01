@@ -1,12 +1,15 @@
-<h1>Shopping list Overview(New)</h1>
+<div data-controller="quantity">
+  <h1>Shopping list Overview(New)</h1>
 
-<% @products.each do |product| %>
-  <%= product.name %>
-  <%= simple_form_for :category,  method: :get do |f|%>
-    <%= f.input :quantity, collection: 1..9, selected: 1%>
-<%=f.submit "Confirm Basket", :class => 'btn btn-outline-dark'%>
-<% end %>
-<% end %>
+  <% @products.each do |product| %>
 
-
-<%= link_to "Confirm choices", group_shopping_lists_path(:group_id, products: @products), data: {turbo_method: :post} %>
+  <div data-quantity-target="math">
+    <%= product.name %>
+    <button data-quantity-target="minus" data-action="click->quantity#minusAction" id="minus">−</button>
+    <input data-quantity-target="inputField" id="minus" type="number" value="0" id="input"/>
+    <button data-quantity-target="plus" id="plus">+</button>
+  </div>
+  <% end %>
+  <%= link_to "Confirm Choice", group_bought_items_path%>
+<%# <%= link_to "Confirm choices", group_shopping_lists_path(:group_id, products: @products), data: {turbo_method: :post} %> %>
+</div>
