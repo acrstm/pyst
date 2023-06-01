@@ -24,10 +24,12 @@ class GroupsController < ApplicationController
     redirect_to groups_path(@group)
   end
 
-private 
+
+
+private
 
 def group_params
-  params.require(:group).permit(:name, :description)
+  params.require(:group).permit(:name, :description, :avatar)
 end
 
   def join
