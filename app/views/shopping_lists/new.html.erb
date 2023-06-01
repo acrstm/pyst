@@ -1,15 +1,23 @@
-<div data-controller="quantity">
-  <h1>Shopping list Overview(New)</h1>
+<div class="new-wrapper" data-controller="quantity">
+      <h1>Shopping list Overview(New)</h1>
+      <% @products.each do |product| %>
+      <div class="container-banner">
+          <div class="banner-item">
+              <%= product.name %>
+              <%= @user.first_name %>
 
-  <% @products.each do |product| %>
-
-  <div data-quantity-target="math">
-    <%= product.name %>
-    <button data-quantity-target="minus" data-action="click->quantity#minusAction" id="minus">−</button>
-    <input data-quantity-target="inputField" id="minus" type="number" value="0" id="input"/>
-    <button data-quantity-target="plus" id="plus">+</button>
-  </div>
-  <% end %>
-  <%= link_to "Confirm Choice", group_bought_items_path%>
-<%# <%= link_to "Confirm choices", group_shopping_lists_path(:group_id, products: @products), data: {turbo_method: :post} %> %>
+          </div>
+              <div class="icon-placeholder">
+                <p>image</p>
+              </div>
+          <div class="banner-buttons">
+              <button data-quantity-target="minus" data-action="click->quantity#minusAction" id="minus">−</button>
+              <input data-quantity-target="inputField" id="minus" type="number" value="0" id="input"/>
+              <button data-quantity-target="plus" id="plus">+</button>
+          </div>
+      </div>
+       <%end%>
 </div>
+
+  <%= link_to "Confirm Choice", group_bought_items_path%>
+<%# <%= link_to "Confirm choices", group_shopping_lists_path(:group_id, products: @products), data: {turbo_method: :post} %>

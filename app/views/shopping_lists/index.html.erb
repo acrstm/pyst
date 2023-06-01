@@ -11,7 +11,7 @@
                   item_wrapper_class: 'category-item',
                   input_html: {class: 'category-selector rounded', multiple: true },
                 # collection: @product
-                collection: @product.map {|product|[product.name, product.id, style:"background-image:url(#{image_path "icons/#{product.name.downcase}.svg"})"]} %>
+                collection: @products.map {|product|[product.name, product.id, style:"background-image:url(#{image_path "icons/#{product.name.downcase}.svg"})"]} %>
 
     </div>
 
@@ -19,11 +19,9 @@
 
           <%= f.submit "Check Basket", :class => 'btn btn-outline-dark'%>
           <% end %>
-
         </div>
 </div>
 <%# <%= image_tag 'icons/milk.svg', width: 25, height: 25 %>
 <%# collection: @product.map {|product|
             #    [product.name,product.id,
             #    image_tag:url(#{image_path "icons/#{product.name.downcase}.svg"})"]}%>
-
