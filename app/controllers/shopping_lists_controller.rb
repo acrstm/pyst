@@ -3,11 +3,12 @@ class ShoppingListsController < ApplicationController
   def index
     # raise
     @shopping_list = ShoppingList.all
-    @product = Product.all
-    
+    @products = Product.all
+
   end
 
   def new
+    @user = current_user
     @shopping_list = ShoppingList.new
     @selected_products = params[:category][:category].drop(1)
     @products = @selected_products.map do |id|
