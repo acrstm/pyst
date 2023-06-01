@@ -4,7 +4,7 @@
   </div>
   <div class="center-frames">
     <div class="frames mt-5 mb-2">
-    <%= link_to "Task Manager", group_tasks_path(:group_id) %>
+    <%= link_to "Task Manager", group_tasks_path(current_user.group_id) %>
     </div>
     <div class="frames mb-2">
     <%= link_to "Shopping List",  group_shopping_lists_path(:group_id)%>
