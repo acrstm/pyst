@@ -26,7 +26,20 @@ class GroupsController < ApplicationController
   end
 
   def join
+    @groups = Group.where.not(id: current_user.group_id)
+  end
 
+  def join_group
+raise
+    @group = Group.find(params[:id])
+    current_user.groups.last = @group
+    if current_user.save
+
+      redirect_to group_path(@group)
+    else
+      raise
+      redirect_to join_groups_path
+    end
   end
 
 

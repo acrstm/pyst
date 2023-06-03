@@ -10,7 +10,13 @@
         <div class="card-show-a al d-flex justify-content-center"><%= @task.deadline.strftime("%d.%m.%Y") %></div>
         <div class="card-show-c d-flex justify-content-center"><%= @task.name %></div>
         <div class="card-show-c d-flex justify-content-center"><%= @task.comments %></div>
-        <div class="card-show-d d-flex justify-content-center"><%=  %></div>
+        <div class="card-show-c d-flex justify-content-center">
+        <% if @task.done? == true %>
+        <%= "done" %>
+        <% else %>
+        <%= "to be done" %>
+        <% end %>
+        </div>
 
 
     </div>
