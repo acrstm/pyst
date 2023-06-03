@@ -30,14 +30,13 @@ class GroupsController < ApplicationController
   end
 
   def join_group
-raise
-    @group = Group.find(params[:id])
-    current_user.groups.last = @group
+    @group = Group.find(params[:user][:group_id])
+    current_user.group = @group
+
     if current_user.save
 
       redirect_to group_path(@group)
     else
-      raise
       redirect_to join_groups_path
     end
   end

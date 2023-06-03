@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :groups do
     collection do
       get :join
-      post :join
+      post :join_group
     end
     resources :tasks, only: [:index, :new, :create, :show] do
       member do

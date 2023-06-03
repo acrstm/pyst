@@ -13,7 +13,7 @@
 
       <p>Join a group</p>
 
-    <%= simple_form_for current_user, url: join_groups_path, method: :post do |f| %>
+    <%= simple_form_for current_user, url: join_group_groups_path, method: :post do |f| %>
       <%= f.input :group_id, collection: @groups, value_method: :id, prompt: 'Pick your group' %>
       <%= f.button :submit, "Join" %>
     <% end %>
