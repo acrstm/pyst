@@ -12,15 +12,14 @@
                   input_html: {class: 'category-selector rounded', multiple: true },
                 # collection: @product
                 collection: @products.map {|product|[product.name, product.id, style:"background-image:url(#{image_path "icons/#{product.name.downcase}.svg"})"]} %>
-
+</div>
     </div>
 
-        <div class="container-basket">
-
-          <%= f.submit "Check Basket", :class => 'btn btn-outline-dark'%>
+        <div class="container-end">
+          <%= f.submit "Check Basket", class:"container-basket"%>
           <% end %>
-        </div>
-</div>
+         </div>
+
 <%# <%= image_tag 'icons/milk.svg', width: 25, height: 25 %>
 <%# collection: @product.map {|product|
             #    [product.name,product.id,

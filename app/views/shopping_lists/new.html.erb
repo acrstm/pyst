@@ -1,23 +1,26 @@
-<div class="new-wrapper" data-controller="quantity">
+<div class="new-wrapper" >
       <h1>Shopping list Overview(New)</h1>
       <% @products.each do |product| %>
-      <div class="container-banner">
+      <div class="container-banner" data-controller="quantity">
           <div class="banner-item">
               <%= product.name %>
-              <%= @user.first_name %>
-
+             <span data-quantity-target="price"><%= product.price.round(2)%></span>
           </div>
               <div class="icon-placeholder">
                 <p>image</p>
               </div>
-          <div class="banner-buttons">
-              <button data-quantity-target="minus" data-action="click->quantity#minusAction" id="minus">−</button>
-              <input data-quantity-target="inputField" id="minus" type="number" value="0" id="input"/>
-              <button data-quantity-target="plus" id="plus">+</button>
+         <div class="cart-totals" >
+          <input type="button" value="-" id="minus-button" for="quantity" data-quantity-target="minus">
+          <input type="number" id="quantity" value="1" min="0"  data-quantity-target="input">
+          <input type="button" value="+" id="plus-button" for="quantity"  data-quantity-target="plus">
+
           </div>
+
+          <h1 data-quantity-target="total">0</h1>
       </div>
-       <%end%>
-</div>
+      <%end%>
+
 
   <%= link_to "Confirm Choice", group_bought_items_path%>
+
 <%# <%= link_to "Confirm choices", group_shopping_lists_path(:group_id, products: @products), data: {turbo_method: :post} %>
