@@ -1,3 +1,42 @@
+<h1 class="title mt-4 mb-3">Todos<br><span style="color: #c7c7c8;"><%= @group.name %></span></h1>
+  <div class="group-show-wrapper">
 
+  <div class="group-show-image-holder" style="background-color: <%= ["#ffc1c6", "#c59ffe", "#fed464", "#c1d9f9", "#d7fafb"].sample %> ">
+    <%= cl_image_tag @group.photo.key, class: "group-show-avatar" %>
+  </div>
 
-<%= cl_image_tag @photo, height: 300, width: 400, crop: :fill %>
+  <div class="option-card-group mt-5">
+
+      <h2 class="mb-2">Task Manager</h2>
+      <div class="task-group-card">
+
+        <div class="group-members">
+          <h6 class="mt-2">Members</h6>
+            <div class="group-members-flex">
+              <% @group_members.each do |user| %>
+                <div class="group-member-image-holder" style="background-color: <%= ["#ffc1c6", "#c59ffe", "#fed464", "#c1d9f9", "#d7fafb"].sample %> ">
+                <% if user.photo.attached? %>
+                    <%= cl_image_tag user.photo.key, class: "group-member-avatar" %>
+                    <% else %>
+                    <%= image_tag "default-avatar.png", class: "group-member-avatar" %>
+                <% end %>
+                </div>
+              <% end %>
+           </div>
+        </div>
+
+        <h6 class="mt-2">Latest Tasks</h6>
+        <div>
+          <% @group_tasks.last(2).each do |task| %>
+            <div class="group-show-task-card">
+              <div class="group-task-show-icon-wrapper">
+                <i class="fa-regular fa-bell" style="color:#f16db8"></i>
+              </div>
+              <p><%= task.name  %></p>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>

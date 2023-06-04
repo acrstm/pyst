@@ -1,0 +1,88 @@
+.group-show-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h6 {
+    padding-top: 5px;
+    padding-left: 10px;
+    font-weight: 300;
+  }
+
+  p {
+    font-weight: 200;
+  }
+
+  .group-show-image-holder{
+    width: 29%;
+      background-color: blue;
+      border-radius: 50%;
+      .group-show-avatar{
+        height: 100px;
+        width: 100px;
+        text-align: center;
+      }
+  }
+
+
+    .option-card-group{
+      background-color: #f5f5f7;
+        width: 100%;
+        padding: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 12px;
+
+      .task-group-card{
+        width: 101%;
+        border-radius: 10px;
+        background-color: white;
+          border: 1px solid #f3f3f3;
+            background-color: white;
+            border-radius: 10px;
+            -webkit-box-shadow: -2px 15px 28px -7px rgba(235, 235, 235, 1);
+            -moz-box-shadow: -2px 15px 28px -7px rgba(235, 235, 235, 1);
+            box-shadow: -2px 15px 28px -7px #dadada;
+      }
+    }
+
+    .group-members-flex{
+      align-items: center;
+      display: flex;
+      padding-left: 10px;
+    }
+
+    .group-member-image-holder {
+        width: 15%;
+
+          border-radius: 50%;
+          height: 36px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          img {
+            height: 27px;
+              width: 25px;
+          }
+    }
+
+    .group-show-task-card{
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+
+        .group-task-show-icon-wrapper{
+          height: 29px;
+            width: 33px;
+            background-color: #feeef3;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            border-radius: 50%;
+        }
+    }
+}
