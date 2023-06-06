@@ -1,16 +1,14 @@
 <h1 class="title mt-4 mb-3">Todos<br><span style="color: #c7c7c8;"><%= @group.name %></span></h1>
-  <div class="group-show-wrapper">
+
+
+
+<div class="group-show-wrapper">
 
   <div class="group-show-image-holder" style="background-color: <%= ["#ffc1c6", "#c59ffe", "#fed464", "#c1d9f9", "#d7fafb"].sample %> ">
     <%= cl_image_tag @group.photo.key, class: "group-show-avatar" %>
   </div>
 
-  <div class="option-card-group mt-5">
-
-      <h2 class="mb-2">Task Manager</h2>
-      <div class="task-group-card">
-
-        <div class="group-members">
+   <div class="group-members">
           <h6 class="mt-2">Members</h6>
             <div class="group-members-flex">
               <% @group_members.each do |user| %>
@@ -23,7 +21,18 @@
                 </div>
               <% end %>
            </div>
-        </div>
+    </div>
+
+  <div class="option-card-group mt-5">
+      <h2 class="mb-3">Task Manager</h2>
+      <div class="task-group-card">
+
+      <h6 class="mt-2">Completion</h6>
+
+      <div class="completion">
+        <div class="statusbar-done"></div>
+        <div class="statusbar-left"></div>
+      </div>
 
         <h6 class="mt-2">Latest Tasks</h6>
         <div>
@@ -37,6 +46,105 @@
           <% end %>
         </div>
 
-      </div>
+    <div class="group-task-button-wrapper">
+      <%= link_to "Check out Tasks", group_tasks_path(@group), class:"btn btn-primary action-task" %>
+    </div>
+
     </div>
   </div>
+
+
+    <div class="option-card-group mt-5">
+      <h2 class="mb-3">Shopping List</h2>
+       <div class="task-group-card">
+        <div class="total-wrapper mt-3">
+           <h6 class="">Total</h6>
+           <h3>232 €</h3>
+        </div>
+
+        <div class="basket-wrapper">
+               <p> <%= @bought_items.length  %></p>
+                <i class="fa-solid fa-basket-shopping"></i>
+        </div>
+        <h6 class="mt-2">Latest Items</h6>
+        <div>
+        <% if @bought_items.empty? %>
+          <div class="group-show-task-card">
+              <div class="group-task-show-icon-wrapper">
+                <i class="fa-solid fa-cow" style="color: #c283f7"></i>
+              </div>
+              <p>Milk</p>
+            </div>
+        <% else %>
+          <%  @bought_items.last(2).each do |task| %>
+            <div class="group-show-task-card">
+              <div class="group-task-show-icon-wrapper">
+                <i class="fa-regular fa-bell" style="color:#f16db8"></i>
+              </div>
+              <p><%= task.name  %></p>
+
+            </div>
+          <% end %>
+        <% end %>
+
+        </div>
+
+      <div class="group-task-button-wrapper">
+        <%= link_to "Check out Tasks", group_task_path(@group), class:"btn btn-primary shopping-action " %>
+      </div>
+
+    </div>
+  </div>
+
+
+   <div class="option-card-group mt-5" style="margin-bottom: 90px">
+      <h2 class="mb-3">Fixed Costs</h2>
+       <div class="task-group-card">
+        <div class="total-wrapper mt-3">
+           <h6 class="">Total</h6>
+           <h3>232 €</h3>
+        </div>
+
+        <div class="basket-wrapper">
+               <p> <%= @bought_items.length  %></p>
+                <i class="fa-solid fa-basket-shopping"></i>
+        </div>
+        <h6 class="mt-2">Latest Items</h6>
+        <div>
+        <% if @bought_items.empty? %>
+          <div class="group-show-task-card">
+              <div class="group-task-show-icon-wrapper">
+                <i class="fa-solid fa-cow" style="color: #c283f7"></i>
+              </div>
+              <p>Milk</p>
+            </div>
+        <% else %>
+          <%  @bought_items.last(2).each do |task| %>
+            <div class="group-show-task-card">
+              <div class="group-task-show-icon-wrapper">
+                <i class="fa-regular fa-bell" style="color:#f16db8"></i>
+              </div>
+              <p><%= task.name  %></p>
+
+            </div>
+          <% end %>
+        <% end %>
+
+        </div>
+
+      <div class="group-task-button-wrapper">
+        <%= link_to "Check out Tasks", group_task_path(@group), class:"btn btn-primary shopping-action " %>
+      </div>
+
+    </div>
+  </div>
+   </div>
+
+
+
+
+
+
+
+
+</div>

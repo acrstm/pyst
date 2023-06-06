@@ -1,16 +1,14 @@
-<h1>Here you can see your new created task</h1>
+<h1 class="title mt-5">TASKS</h1>
 
 
 
 
 
-    <div class="card-tasks-show d-flex flex-column">
+    <div class="show-tasks-wrapper">
 
-        <div class="card-show-d"><%= render "shared/current_user_index_avatar" %></div>
-        <div class="card-show-b"><%= @task.deadline.strftime("%d.%m.%Y") %></div>
-        <div class="card-show-c"><%= @task.name %></div>
-        <div class="card-show-c"><%= @task.comments %></div>
-        <div class="card-show-d"><%=  %></div>
+        <%# <div class="card-show-d"><%= render "shared/current_user_index_avatar" %>
+        <%# <div class="card-show-b"><%= @task.deadline.strftime("%d.%m.%Y") %></div>
+
 
 
     </div>
