@@ -3,6 +3,7 @@ class TasksController < ApplicationController
 
   def index
 
+
     #   if params[:my_user]
      @tasks = Task.where(group_id: params[:group_id])
 
@@ -20,6 +21,10 @@ class TasksController < ApplicationController
     #   @upcoming_tasks = Task.where("deadline > ?", Date.today).where(user_id: current_user.id).where(group_id: @group.id)
     #   @missed_tasks = Task.where("deadline < ?", Date.today).where(user_id: current_user.id).where(group_id: @group.id)
     # end
+    # @upcoming_tasks = Task.where("deadline > ?", Date.today).where(user_id: current_user.id).where(group_id: @group.id)
+    # This for user task dashboard
+
+
   end
 
   def new
@@ -45,6 +50,21 @@ class TasksController < ApplicationController
   def show
     @task = Task.find(params[:id])
   end
+
+
+  def progress
+    @group = Group.find(params[:group_id])
+    @task = Task.find(params[:id])
+
+    @task.done = true
+
+    @task.save
+
+    redirect_to group_task_path(@group)
+  end
+
+
+
 
   private
 
