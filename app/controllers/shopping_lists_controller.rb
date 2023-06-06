@@ -14,6 +14,7 @@ class ShoppingListsController < ApplicationController
     @products = @selected_products.map do |id|
       Product.find(id)
     end
+
     # raise
   end
 
@@ -25,7 +26,7 @@ class ShoppingListsController < ApplicationController
   private
 
   def shopping_params
-    params.require(:shopping_list).permit(:category, :category)
+    params.require(:shopping_list).permit(:category)
   end
   # def create
   #   @chosen_products = params[:products]
