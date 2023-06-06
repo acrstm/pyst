@@ -4,7 +4,6 @@ class ShoppingListsController < ApplicationController
     # raise
     @shopping_list = ShoppingList.all
     @products = Product.all
-
   end
 
   def new

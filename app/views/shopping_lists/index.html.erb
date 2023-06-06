@@ -1,24 +1,23 @@
 <div class="container">
-    <div class="container-form">
-      <%# <h1>Shoppings index</h1> %>
-
-      <%= simple_form_for :category, url: new_group_shopping_list_path(), method: :get do |f| %>
-
-        <%= f.input :category, legend_tag: false,
-                  as: :check_boxes,
-                  collection_wrapper_tag: 'div',
-                  collection_wrapper_class: 'category-wrapper',
-                  item_wrapper_class: 'category-item',
-                  input_html: {class: 'category-selector rounded', multiple: true },
-                # collection: @product
-                collection: @products.map {|product|[product.name, product.id, style:"background-image:url(#{image_path "icons/#{product.name.downcase}.svg"})"]} %>
+  <div class="container-form">
+    <%# <h1>Shoppings index</h1> %>
+    <%= simple_form_for :category, url: new_group_shopping_list_path(), method: :get do |f| %>
+      <%= f.input :category, legend_tag: false,
+                as: :check_boxes,
+                collection_wrapper_tag: 'div',
+                collection_wrapper_class: 'category-wrapper',
+                item_wrapper_class: 'category-item',
+                input_html: {class: 'category-selector rounded', multiple: true },
+              # collection: @product
+              collection: @products.map {|product|[product.name, product.id, style:"background-image:url(#{image_path "icons/#{product.name.downcase}.svg"})"]} %>
+      <div class="container-end">
+        <%= f.submit "Check Basket", class:"container-basket"%>
+      </div>
+    <% end %>
+  </div>
 </div>
-    </div>
 
-        <div class="container-end">
-          <%= f.submit "Check Basket", class:"container-basket"%>
-          <% end %>
-         </div>
+
 
 <%# <%= image_tag 'icons/milk.svg', width: 25, height: 25 %>
 <%# collection: @product.map {|product|
