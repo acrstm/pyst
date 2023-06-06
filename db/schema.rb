@@ -73,6 +73,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_03_102004) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "multiple_groups", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_multiple_groups_on_group_id"
+    t.index ["user_id"], name: "index_multiple_groups_on_user_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.float "price"
@@ -132,6 +141,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_03_102004) do
   add_foreign_key "bought_items", "users"
   add_foreign_key "fixed_costs", "groups"
   add_foreign_key "fixed_costs", "users"
+  add_foreign_key "multiple_groups", "groups"
+  add_foreign_key "multiple_groups", "users"
   add_foreign_key "shopping_lists", "groups"
   add_foreign_key "tasks", "groups"
   add_foreign_key "tasks", "users"

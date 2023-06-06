@@ -21,7 +21,7 @@ export default class extends Controller {
 
         btn.previousElementSibling.value++;
         let currenButtonValue = btn.previousElementSibling.value
-        const price = Number(this.priceTarget.innerText)
+        const price = Number(this.priceTarget.innerText).toFixed(2)
         let total = price * currenButtonValue
         this.totalTarget.innerText = total
 
@@ -47,7 +47,7 @@ export default class extends Controller {
 
 
   calculateTotal(){
- 
+
 
 
   }

@@ -2,31 +2,34 @@ class TasksController < ApplicationController
 
 
   def index
-      if params[:my_user]
-      @group = Group.find(current_user.group_id)
-
-      @tasks = @group.tasks.map do |task|
-        task.user_id == params[:my_user]
-      end
 
 
-      @upcoming_tasks = Task.where("deadline > ?", Date.today).where(group_id: @group.id)
-      @missed_tasks = Task.where("deadline < ?", Date.today).where(group_id: @group.id)
-      # @my_date = Date.parse(Date.today).strftime("%d/%m/%Y")
-    else
-      @group = Group.find(current_user.group_id)
-      @tasks = @group.tasks
-      @upcoming_tasks = Task.where("deadline > ?", Date.today).where(group_id: @group.id)
-      @missed_tasks = Task.where("deadline < ?", Date.today).where(group_id: @group.id)
-    end
+    #   if params[:my_user]
+     @tasks = Task.where(group_id: params[:group_id])
+
+    #   @tasks = @group.tasks.map do |task|
+    #     task.user_id == params[:my_user]
+    #   end
 
 
+    #   @upcoming_tasks = Task.where("deadline > ?", Date.today).where(user_id: params[:my_user]).where(group_id: @group.id)
+    #   @missed_tasks = Task.where("deadline < ?", Date.today).where(user_id: params[:my_user]).where(group_id: @group.id)
+    #   # @my_date = Date.parse(Date.today).strftime("%d/%m/%Y")
+    # else
+    #   @group = Group.find(current_user.group_id)
+    #   @tasks = @group.tasks
+    #   @upcoming_tasks = Task.where("deadline > ?", Date.today).where(user_id: current_user.id).where(group_id: @group.id)
+    #   @missed_tasks = Task.where("deadline < ?", Date.today).where(user_id: current_user.id).where(group_id: @group.id)
+    # end
     # @upcoming_tasks = Task.where("deadline > ?", Date.today).where(user_id: current_user.id).where(group_id: @group.id)
     # This for user task dashboard
+
+
   end
 
   def new
-    @group = Group.find(current_user.group_id)
+
+    @group = Group.find(params[:group_id])
     @task = Task.new # Needed to instantiate the form_with
 
   end
