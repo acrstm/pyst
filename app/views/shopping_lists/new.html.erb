@@ -1,26 +1,35 @@
-<div class="new-wrapper" >
-      <h1>Shopping list Overview(New)</h1>
-      <% @products.each do |product| %>
-      <div class="container-banner" data-controller="quantity">
-          <div class="banner-item">
-              <%= product.name %>
-             <span data-quantity-target="price"><%= product.price.round(2)%></span>
-          </div>
-              <div class="icon-placeholder">
-                <p>image</p>
+<div class="wrapper-total">
+    <div class="wrapper-overview">
+        <div class="new-wrapper" >
+              <%# <h1>Shopping list Overview(New)</h1> %>
+              <% @products.each do |product| %>
+              <div class="container-banner" data-controller="quantity">
+                      <div class="banner-item">
+                          <%= product.name %>
+                        <span data-quantity-target="price"><%= product.price%></span>
+
+                      </div>
+                      <div class="icon-placeholder">
+                        <p>image</p>
+                      </div>
+                      <div class="price-banner">
+                          <div class="total-banner">
+                            <span style="width: 40px" data-quantity-target="total" class="badge badge-primary badge-pill">0</span>
+                          </div>
+
+                          <div class="cart-totals" >
+                            <input type="button" value="-" id="minus-button" for="quantity" data-quantity-target="minus">
+                            <input class="w-50" type="number" id="quantity" value="1" min="0"  data-quantity-target="input">
+                            <input type="button" value="+" id="plus-button" for="quantity"  data-quantity-target="plus">
+                          </div>
+                            <%# <p data-quantity-target="total">0</p> %>
+                      </div>
               </div>
-         <div class="cart-totals" >
-          <input type="button" value="-" id="minus-button" for="quantity" data-quantity-target="minus">
-          <input type="number" id="quantity" value="1" min="0"  data-quantity-target="input">
-          <input type="button" value="+" id="plus-button" for="quantity"  data-quantity-target="plus">
+              <%end%>
+        </div>
+    </div>
 
-          </div>
-
-          <h1 data-quantity-target="total">0</h1>
+      <div class="wrapper-choice ">
+        <%= link_to "Confirm Choice", group_bought_items_path%>
       </div>
-      <%end%>
-
-
-  <%= link_to "Confirm Choice", group_bought_items_path%>
-
-<%# <%= link_to "Confirm choices", group_shopping_lists_path(:group_id, products: @products), data: {turbo_method: :post} %>
+  </div>

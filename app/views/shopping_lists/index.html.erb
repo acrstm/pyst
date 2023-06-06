@@ -4,7 +4,7 @@
 
       <%= simple_form_for :category, url: new_group_shopping_list_path(), method: :get do |f| %>
 
-        <%= f.input :category,
+        <%= f.input :category, legend_tag: false,
                   as: :check_boxes,
                   collection_wrapper_tag: 'div',
                   collection_wrapper_class: 'category-wrapper',
