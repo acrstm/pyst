@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :tasks, only: [:index, :new, :create, :show] do
       member do
         patch :progress
+
       end
     end
 
@@ -23,7 +24,9 @@ Rails.application.routes.draw do
 
 
 
+
   get "options", to: "pages#options"
+  get "usertasks/:id", to: "tasks#userstasks", as: "usertasks"
   # get  "group", to: "groups#show"
 
 end

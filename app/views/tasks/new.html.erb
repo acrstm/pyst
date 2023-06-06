@@ -3,7 +3,7 @@
   <div class="container tasks_index_bg_card">
     <%= simple_form_for [@group, @task] do |f| %>
       <%= f.input :name, placeholder: "e.g. Clean something", required: true%>
-      <%= f.association :user, label_method: :id, placeholder: "Marie Jane", required: true%>
+      <%= f.input :assigned_to_id, collection: @user_profiles, label_method: :first_name, placeholder: "Marie Jane", required: true%>
       <%= f.input :urgent %>
       <%= f.input :comments, required: true %>
       <%= f.input :deadline, required: true%>
