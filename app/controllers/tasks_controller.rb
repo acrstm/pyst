@@ -10,15 +10,19 @@ class TasksController < ApplicationController
       end
 
 
-      @upcoming_tasks = Task.where("deadline > ?", Date.today).where(user_id: params[:my_user]).where(group_id: @group.id)
-      @missed_tasks = Task.where("deadline < ?", Date.today).where(user_id: params[:my_user]).where(group_id: @group.id)
+      @upcoming_tasks = Task.where("deadline > ?", Date.today).where(group_id: @group.id)
+      @missed_tasks = Task.where("deadline < ?", Date.today).where(group_id: @group.id)
       # @my_date = Date.parse(Date.today).strftime("%d/%m/%Y")
     else
       @group = Group.find(current_user.group_id)
       @tasks = @group.tasks
-      @upcoming_tasks = Task.where("deadline > ?", Date.today).where(user_id: current_user.id).where(group_id: @group.id)
-      @missed_tasks = Task.where("deadline < ?", Date.today).where(user_id: current_user.id).where(group_id: @group.id)
+      @upcoming_tasks = Task.where("deadline > ?", Date.today).where(group_id: @group.id)
+      @missed_tasks = Task.where("deadline < ?", Date.today).where(group_id: @group.id)
     end
+
+
+    # @upcoming_tasks = Task.where("deadline > ?", Date.today).where(user_id: current_user.id).where(group_id: @group.id)
+    # This for user task dashboard
   end
 
   def new
@@ -43,6 +47,21 @@ class TasksController < ApplicationController
   def show
     @task = Task.find(params[:id])
   end
+
+
+  def progress
+    @group = Group.find(params[:group_id])
+    @task = Task.find(params[:id])
+
+    @task.done = true
+
+    @task.save
+
+    redirect_to group_task_path(@group)
+  end
+
+
+
 
   private
 

@@ -8,8 +8,14 @@ Rails.application.routes.draw do
   resources :groups do
     collection do
       get :join
+      post :join_group
     end
-    resources :tasks, only: [:index, :new, :create, :show]
+    resources :tasks, only: [:index, :new, :create, :show] do
+      member do
+        patch :progress
+      end
+    end
+
     resources :shopping_lists, only: [:index, :new, :create, :show]
     resources :bought_items, only: [:index, :new, :create, :show]
     resources :fixed_costs, only: [:index, :new, :create, :show]

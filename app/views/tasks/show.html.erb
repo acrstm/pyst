@@ -6,11 +6,17 @@
 
     <div class="card-tasks-show d-flex flex-column">
 
-        <div class="card-show-d"><%= render "shared/current_user_index_avatar" %></div>
-        <div class="card-show-b"><%= @task.deadline.strftime("%d.%m.%Y") %></div>
-        <div class="card-show-c"><%= @task.name %></div>
-        <div class="card-show-c"><%= @task.comments %></div>
-        <div class="card-show-d"><%=  %></div>
+        <div class="card-show-d d-flex justify-content-center"><%= render "shared/current_user_index_avatar" %></div>
+        <div class="card-show-a al d-flex justify-content-center"><%= @task.deadline.strftime("%d.%m.%Y") %></div>
+        <div class="card-show-c d-flex justify-content-center"><%= @task.name %></div>
+        <div class="card-show-c d-flex justify-content-center"><%= @task.comments %></div>
+        <div class="card-show-c d-flex justify-content-center">
+        <% if @task.done? == true %>
+        <%= "done" %>
+        <% else %>
+        <%= "to be done" %>
+        <% end %>
+        </div>
 
 
     </div>
