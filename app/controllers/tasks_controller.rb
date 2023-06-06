@@ -2,10 +2,10 @@ class TasksController < ApplicationController
 
 
   def index
-
-
     #   if params[:my_user]
-     @tasks = Task.where(group_id: params[:group_id])
+    #  @tasks = Task.where(group_id: params[:group_id])
+     @tasks = Task.where("deadline >= ?", Date.today).where(group_id: params[:group_id])
+     @missed_tasks = Task.where("deadline < ?", Date.today).where(group_id: params[:group_id])
 
     #   @tasks = @group.tasks.map do |task|
     #     task.user_id == params[:my_user]
@@ -23,13 +23,17 @@ class TasksController < ApplicationController
     # end
     # @upcoming_tasks = Task.where("deadline > ?", Date.today).where(user_id: current_user.id).where(group_id: @group.id)
     # This for user task dashboard
+  end
 
-
+  def userstasks
+    my_tasks = Task.where("deadline > ?", Date.today).where(assigned_to_id: current_user.id).where(group_id: params[:id])
   end
 
   def new
 
     @group = Group.find(params[:group_id])
+    @user_ids_in_this_group =  MultipleGroup.where(group_id:  @group.id).pluck(:user_id)
+    @user_profiles = User.where(id:  @user_ids_in_this_group)
     @task = Task.new # Needed to instantiate the form_with
 
   end
@@ -44,7 +48,8 @@ class TasksController < ApplicationController
 
     @task.save
 
-   redirect_to group_task_path(@group, @task) # group_id task_id
+
+   redirect_to group_tasks_path(@group) # group_id task_id
   end
 
   def show
@@ -69,7 +74,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :user_id, :done, :urgent, :comments, :deadline, :recurrence, :recurring)
+    params.require(:task).permit(:name, :assigned_to_id, :done, :urgent, :comments, :deadline, :recurrence, :recurring)
   end
 
 

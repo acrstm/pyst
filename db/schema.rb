@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_03_102004) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_03_230040) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -109,9 +109,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_03_102004) do
     t.bigint "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
     t.index ["group_id"], name: "index_tasks_on_group_id"
-    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -123,10 +121,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_03_102004) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "first_name"
-    t.string "last_name"
-    t.boolean "admin"
-    t.string "address"
-    t.date "birthday"
     t.bigint "group_id"
     t.integer "quantity"
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -145,6 +139,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_03_102004) do
   add_foreign_key "multiple_groups", "users"
   add_foreign_key "shopping_lists", "groups"
   add_foreign_key "tasks", "groups"
-  add_foreign_key "tasks", "users"
   add_foreign_key "users", "groups"
 end
