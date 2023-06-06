@@ -1,7 +1,19 @@
 class GroupsController < ApplicationController
 
   def index
-    @groups = Group.all
+    group_ids = MultipleGroup.where(user:current_user).pluck(:group_id)
+    @groups = Group.where(id: group_ids)
+  end
+
+  def show
+    @group = Group.find(params[:id])
+    @shopping_list =  @group.shopping_list
+    find_user_ids = MultipleGroup.where(group: @group).pluck(:user_id)
+    @group_members = User.where(id:find_user_ids)
+    @group_tasks = @group.tasks
+    @group_shopping_list = @group.shopping_list
+    @bought_items = BoughtItem.where(shopping_list_id: @group_shopping_list.id )
+
   end
 
   def new
@@ -10,20 +22,18 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-
     @user = current_user
     # @task.user = @user
 
     @group.save
     @user.group_id = @group.id
+    MultipleGroup.create(user_id: current_user.id, group_id: @group.id)
+    ShoppingList.create(group: @group)
     @user.save
-    redirect_to group_path(@group)
+    redirect_to groups_path
   end
 
-  def show
-    @group = Group.find(params[:id])
-    @photo = @group.photo.key
-  end
+
 
   def join
     @groups = Group.where.not(id: current_user.group_id)

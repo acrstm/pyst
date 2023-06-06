@@ -1,17 +1,13 @@
-<div class="d-flex align-items-center flex-column">
 
-  <h3>Groups</h3>
+
+  <h3 class="title mt-5 mb-4">My Groups</h3>
+  <div class="mt-5 mb-5" style="width: 100%; text-align:center">
   <%= link_to new_group_path do %>
-      <div class="container">
-        <i class="fa-solid fa-square-plus fa-2xl" style="color:#DF6C4F" class="align-center" ></i>
-      </div>
+        <i class="fa-solid fa-square-plus fa-2xl" style="color:#23c560; text-align:center; font-size:50px"></i>
   <% end %>
-
-
-    <div class="container tasks_index_bg_card">
-      <%= render "groups/card_groups_index" %>
-    </div>
-
   </div>
 
-</div>
+
+    <div class="group-grid">
+      <%= render "group_card" %>
+    </div>
