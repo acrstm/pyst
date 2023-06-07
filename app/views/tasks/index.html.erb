@@ -9,14 +9,22 @@
 
 
 
-    <div class="index-tasks-wrapper">
+    <div class="index-tasks-wrapper" data-controller="accordion">
 
+  <h1 class="mb-3" style="color:#adadaf">Upcoming Tasks</h1>
     <% @tasks.each do |task| %>
       <%= render "task_card", task:task %>
     <% end %>
 
         <%# <div class="card-show-d"><%= render "shared/current_user_index_avatar" %>
         <%# <div class="card-show-b"><%= @task.deadline.strftime("%d.%m.%Y") %>
+
+     <button class="accordion mb-3" data-accordion-target="accordion"><h1 style="color:#adadaf">Missed Tasks</h1></button>
+        <div class="panel">
+          <% @tasks.each do |task| %>
+            <%= render "missed_task_card", task:task %>
+          <% end %>
+        </div>
 
 
   </div>
@@ -45,4 +53,3 @@
 
     <%# </div>
  </div> %>
-
