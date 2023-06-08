@@ -13,20 +13,18 @@ Rails.application.routes.draw do
     resources :tasks, only: [:index, :new, :create, :show] do
       member do
         patch :progress
-
       end
     end
 
-    resources :shopping_lists, only: [:index, :new, :create, :show]
+    resources :shopping_lists, only: [:index, :new, :create, :show] do
+      collection do
+        get :new_item
+      end
+    end
     resources :bought_items, only: [:index, :new, :create, :show]
     resources :fixed_costs, only: [:index, :new, :create, :show]
   end
-
-
-
-
   get "options", to: "pages#options"
   get "usertasks/:id", to: "tasks#userstasks", as: "usertasks"
-  # get  "group", to: "groups#show"
-
+  # get "groups/:group_id", to: "shopping_lists#new_item", as: "newitem"
 end
