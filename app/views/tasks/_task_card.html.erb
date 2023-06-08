@@ -1,7 +1,7 @@
 <div class="task-card-index mb-3">
   <div class="task-owner pt-3">
     <div class="task-owner-bg-color" style="background-color: <%= ["#ffc1c6", "#c59ffe", "#fed464", "#c1d9f9", "#d7fafb"].sample %>">
-      <%= link_to usertasks_path(params[:group_id]) do %>
+      <%= link_to usertasks_path(params[:group_id], task.assigned_to_id) do %>
       <%= image_tag "default-avatar.png" %>
       <% end %>
     </div>
