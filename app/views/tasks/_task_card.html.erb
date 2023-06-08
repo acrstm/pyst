@@ -1,4 +1,4 @@
-<div class="task-card-index">
+<div class="task-card-index mb-3">
   <div class="task-owner pt-3">
     <div class="task-owner-bg-color" style="background-color: <%= ["#ffc1c6", "#c59ffe", "#fed464", "#c1d9f9", "#d7fafb"].sample %>">
       <%= link_to usertasks_path(params[:group_id]) do %>
@@ -23,9 +23,11 @@
 
   <div class="task-options mb-3">
     <div class="task-options-flex">
-      <div class="button-circle" style="background-color:#bef8d5; margin-right: 10px">
-        <i class="fa-solid fa-check"></i>
-      </div>
+     <%= link_to finish_task_group_task_path(params[:group_id], task), data: {turbo_method: :patch} do %>
+        <div class="button-circle" style="background-color:#bef8d5; margin-right: 10px">
+          <i class="fa-solid fa-check"></i>
+        </div>
+      <% end %>
 
       <div class="button-circle" style="background-color:#fecacd">
         <i class="fa-solid fa-xmark" style="color:#af2632"></i>
