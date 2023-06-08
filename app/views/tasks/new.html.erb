@@ -1,19 +1,16 @@
-<h1>Here you can create a new Task</h1>
+<h1 class="title mt-4 mb-3">👾<br>Create a new Task</h1>
 
-  <div class="container tasks_index_bg_card">
-    <%= simple_form_for [@group, @task] do |f| %>
+    <%= simple_form_for [@group, @task], class: "new-group" do |f| %>
       <%= f.input :name, placeholder: "e.g. Clean something", required: true%>
-      <%= f.input :assigned_to_id, collection: @user_profiles, label_method: :first_name, placeholder: "Marie Jane", required: true%>
-      <%= f.input :urgent %>
+      <%= f.input :assigned_to_id, collection: @user_profiles, label_method: :first_name, placeholder: "Pick a housemate", required: true, label: "Assign to"%>
+      <%= f.input :urgent, label: "Urgent 🚨" %>
       <%= f.input :comments, required: true %>
       <%= f.input :deadline, required: true%>
 
-      <%= f.input :recurrence  if :recurring == true %>
 
-      <%= f.submit :class => "btn btn-primary" %>
+
+      <%= f.submit :class => "action btn btn-primary", style: "width: 100%" %>
     <% end %>
-  </div>
+
 
 <div>
-  <%= link_to "See all tasks", group_tasks_path, :class => "btn btn-primary mt-1 " %>
-</div>
