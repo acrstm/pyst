@@ -1,6 +1,11 @@
-<div class="container">
+<div class="container-init">
+      <div class="plus-wrapper">
+        <%# <%= link_to group_bought_items_path do %>
+        <%= link_to new_item_group_shopping_lists_path  do %>
+          <i class="fa-solid fa-square-plus fa-2xl" style="color:#23c560; text-align:center; font-size:50px"></i>
+         <% end %>
+      </div>
   <div class="container-form">
-    <%# <h1>Shoppings index</h1> %>
     <%= simple_form_for :category, url: new_group_shopping_list_path(), method: :get do |f| %>
       <%= f.input :category, legend_tag: false,
                 as: :check_boxes,
