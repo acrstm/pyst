@@ -4,9 +4,9 @@ class TasksController < ApplicationController
   def index
     #   if params[:my_user]
     #  @tasks = Task.where(group_id: params[:group_id])
-     @tasks = Task.where("deadline >= ?", Date.today).where(group_id: params[:group_id])
+     @tasks = Task.where("deadline >= ?", Date.today).where(group_id: params[:group_id]).where(done: nil)
      @missed_tasks = Task.where("deadline < ?", Date.today).where(group_id: params[:group_id])
-
+    @done_tasks = Task.where("deadline >= ?", Date.today).where(group_id: params[:group_id]).where(done: true)
     #   @tasks = @group.tasks.map do |task|
     #     task.user_id == params[:my_user]
     #   end
@@ -26,16 +26,17 @@ class TasksController < ApplicationController
   end
 
   def userstasks
-    my_tasks = Task.where("deadline > ?", Date.today).where(assigned_to_id: current_user.id).where(group_id: params[:id])
+    @group = Group.find(params[:id])
+    @user = User.find(params[:format])
+    @my_tasks = Task.where("deadline > ?", Date.today).where(assigned_to_id: @user).where(group_id: @group)
   end
 
   def new
 
     @group = Group.find(params[:group_id])
     @user_ids_in_this_group =  MultipleGroup.where(group_id:  @group.id).pluck(:user_id)
-    @user_profiles = User.where(id:  @user_ids_in_this_group)
+    @user_profiles = User.where(id: @user_ids_in_this_group)
     @task = Task.new # Needed to instantiate the form_with
-
   end
 
 
@@ -54,8 +55,18 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+    @group = Group.find(params[group_id])
+    @users = MultipleGroup.where(group_id:  @group.id).pluck(:user_id)
   end
 
+  def finish_task
+    @task = Task.find(params[:id])
+    @group = Group.find(params[:group_id])
+    @task.done = true
+    @task.save
+
+    redirect_to group_tasks_path(@group)
+  end
 
   def progress
     @group = Group.find(params[:group_id])
