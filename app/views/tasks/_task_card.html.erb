@@ -6,11 +6,18 @@
       <% end %>
     </div>
     <h6><%= User.find(task.assigned_to_id).first_name %>'s Task</h6>
-    <h6 style="font-weight: 400; color: #b8b8b8;">Created <%#= TimeDifference.between(task.created_at, Time.now).in_minutes %> 5 Mins ago</h6>
+    <% timedifferece = TimeDifference.between(task.created_at, Time.now).in_minutes %>
+      <% if timedifferece < 60 %>
+          <h6 style="font-weight: 400; color: #b8b8b8;">Created <%= TimeDifference.between(task.created_at, Time.now).in_minutes.round %> Mins ago</h6>
+        <% elsif timedifferece >= 60 && timedifferece <= 1440 %>
+          <h6 style="font-weight: 400; color: #b8b8b8;">Created <%= timedifferece = TimeDifference.between(task.created_at, Time.now).in_hours.round %> Hours ago</h6>
+        <% else %>
+          <h6 style="font-weight: 400; color: #b8b8b8;">Created <%= timedifferece = TimeDifference.between(task.created_at, Time.now).in_days.round %> Days ago</h6>
+        <% end %>
   </div>
 
   <div class="task-detail mb-3 mt-3">
-  <h6 style="color: #6f9cb6;">26th Jan</h6>
+  <h6 style="color: #6f9cb6;"> <%= task.deadline.strftime("%d.%m.%Y") %> </h6>
   <h6 style="color: #0f5779;">  <%= task.name %></h6>
   </div>
 
