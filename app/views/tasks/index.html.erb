@@ -6,12 +6,18 @@
       <% end %>
   </div>
 
-
+    <p>This are the upcoming tasks</p>
 
 
     <div class="index-tasks-wrapper">
 
     <% @tasks.each do |task| %>
+      <%= render "task_card", task:task %>
+    <% end %>
+
+    <p>This are the missed tasks</p>
+
+    <% @missed_tasks.each do |task| %>
       <%= render "task_card", task:task %>
     <% end %>
 
@@ -45,4 +51,3 @@
 
     <%# </div>
  </div> %>
-

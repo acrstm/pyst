@@ -33,7 +33,7 @@ class TasksController < ApplicationController
 
     @group = Group.find(params[:group_id])
     @user_ids_in_this_group =  MultipleGroup.where(group_id:  @group.id).pluck(:user_id)
-    @user_profiles = User.where(id:  @user_ids_in_this_group)
+    @user_profiles = User.where(id: @user_ids_in_this_group)
     @task = Task.new # Needed to instantiate the form_with
 
   end
