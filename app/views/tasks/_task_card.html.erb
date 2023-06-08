@@ -2,7 +2,11 @@
   <div class="task-owner pt-3">
     <div class="task-owner-bg-color" style="background-color: <%= ["#ffc1c6", "#c59ffe", "#fed464", "#c1d9f9", "#d7fafb"].sample %>">
       <%= link_to usertasks_path(params[:group_id], task.assigned_to_id) do %>
-      <%= image_tag "default-avatar.png" %>
+        <% if User.find(task.assigned_to_id).photo.attached? %>
+          <%= cl_image_tag User.find(task.assigned_to_id).photo.key, class: "group-member-avatar" %>
+        <% else %>
+          <%= image_tag "default-avatar.png", class: "group-member-avatar" %>
+        <% end %>
       <% end %>
     </div>
     <h6><%= User.find(task.assigned_to_id).first_name %>'s Task</h6>

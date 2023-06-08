@@ -4,8 +4,8 @@ class TasksController < ApplicationController
   def index
     #   if params[:my_user]
     #  @tasks = Task.where(group_id: params[:group_id])
-     @tasks = Task.where("deadline >= ?", Date.today).where(group_id: params[:group_id]).where(done: nil)
-     @missed_tasks = Task.where("deadline < ?", Date.today).where(group_id: params[:group_id])
+    @tasks = Task.where("deadline >= ?", Date.today).where(group_id: params[:group_id]).where(done: nil)
+    @missed_tasks = Task.where("deadline < ?", Date.today).where(group_id: params[:group_id])
     @done_tasks = Task.where("deadline >= ?", Date.today).where(group_id: params[:group_id]).where(done: true)
     #   @tasks = @group.tasks.map do |task|
     #     task.user_id == params[:my_user]
@@ -28,7 +28,7 @@ class TasksController < ApplicationController
   def userstasks
     @group = Group.find(params[:id])
     @user = User.find(params[:format])
-    @my_tasks = Task.where("deadline > ?", Date.today).where(assigned_to_id: @user).where(group_id: @group)
+    @my_tasks = Task.where(assigned_to_id: @user).where(group_id: @group)
   end
 
   def new
