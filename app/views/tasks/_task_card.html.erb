@@ -13,7 +13,7 @@
           <h6 style="font-weight: 400; color: #b8b8b8;">Created <%= timedifferece = TimeDifference.between(task.created_at, Time.now).in_hours.round %> Hours ago</h6>
         <% else %>
           <h6 style="font-weight: 400; color: #b8b8b8;">Created <%= timedifferece = TimeDifference.between(task.created_at, Time.now).in_days.round %> Days ago</h6>
-        <% end %>
+        <% end %> 
   </div>
 
   <div class="task-detail mb-3 mt-3">
