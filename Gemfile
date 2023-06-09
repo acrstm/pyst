@@ -39,6 +39,13 @@ gem "faker"
 # upload images
 gem "cloudinary"
 
+# search
+gem "pg_search"
+gem "elasticsearch"
+gem "searchkick"
+
+
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

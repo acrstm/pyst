@@ -10,7 +10,7 @@
   </div>
 
   <div class="task-detail-missed mb-3 mt-3">
-  <h6 style="color: #c87f90;">26th Jan</h6>
+  <h6 style="color: #c87f90;"> <%= task.deadline.strftime("%d.%m.%Y") %> </h6>
   <h6 style="color: #c87f90;"><%= task.name %></h6>
   </div>
 

@@ -3,6 +3,13 @@ class GroupsController < ApplicationController
   def index
     group_ids = MultipleGroup.where(user:current_user).pluck(:group_id)
     @groups = Group.where(id: group_ids)
+
+    if params[:query].present?
+      @groups = Group.search_by_group_and_description(params[:query])
+    else
+      @groups = Group.where(id: group_ids)
+    end
+
   end
 
   def show

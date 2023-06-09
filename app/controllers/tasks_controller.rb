@@ -7,6 +7,12 @@ class TasksController < ApplicationController
     @tasks = Task.where("deadline >= ?", Date.today).where(group_id: params[:group_id]).where(done: nil)
     @missed_tasks = Task.where("deadline < ?", Date.today).where(group_id: params[:group_id])
     @done_tasks = Task.where("deadline >= ?", Date.today).where(group_id: params[:group_id]).where(done: true)
+
+    if params[:query].present?
+      @tasks = Task.search_by_task_and_name(params[:query])
+    else
+      @tasks = Task.where(id: @tasks)
+    end
     #   @tasks = @group.tasks.map do |task|
     #     task.user_id == params[:my_user]
     #   end
@@ -27,8 +33,13 @@ class TasksController < ApplicationController
 
   def userstasks
     @group = Group.find(params[:id])
+
     @user = User.find(params[:format])
     @my_tasks = Task.where(assigned_to_id: @user).where(group_id: @group)
+
+    @user = User.find(params[:id])
+    @my_tasks = Task.where("deadline > ?", Date.today).where(assigned_to_id: @user).where(group_id: @group)
+
   end
 
   def new
@@ -67,6 +78,9 @@ class TasksController < ApplicationController
 
     redirect_to group_tasks_path(@group)
   end
+
+
+
 
   def progress
     @group = Group.find(params[:group_id])

@@ -1,9 +1,7 @@
 class BoughtItemsController < ApplicationController
   def index
-    @shopping = ShoppingList.all
-    @product = Product.all
-    @user = User.all
-    # raise
+    @user = current_user
+    @shopping_list = ShoppingList.new
   end
 
 
