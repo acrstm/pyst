@@ -33,8 +33,13 @@ class TasksController < ApplicationController
 
   def userstasks
     @group = Group.find(params[:id])
+
+    @user = User.find(params[:format])
+    @my_tasks = Task.where(assigned_to_id: @user).where(group_id: @group)
+
     @user = User.find(params[:id])
     @my_tasks = Task.where("deadline > ?", Date.today).where(assigned_to_id: @user).where(group_id: @group)
+
   end
 
   def new

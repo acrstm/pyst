@@ -43,14 +43,17 @@ class GroupsController < ApplicationController
 
 
   def join
-    @groups = Group.where.not(id: current_user.group_id)
+    @groups = Group.all
   end
 
   def join_group
-    @group = Group.find(params[:user][:group_id])
-    current_user.group = @group
 
-    if current_user.save
+    @group = Group.find(params[:user][:group_id])
+    @multigroup = MultipleGroup.new()
+    @multigroup.group =  @group
+    @multigroup.user =  current_user
+
+    if @multigroup.save
 
       redirect_to group_path(@group)
     else
