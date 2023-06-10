@@ -14,7 +14,7 @@
                 item_wrapper_class: 'category-item',
                 input_html: {class: 'category-selector rounded', multiple: true },
               # collection: @product
-              collection: @products.map {|product|[product.name, product.id, style:"background-image:url(#{image_path "icons/#{product.name.downcase}.svg"})"]} %>
+              collection: @products.map {|product|[product.name, product.id, style:"background-image:url(#{image_path "icons/png/#{product.name.downcase}.png"})"]} %>
       <div class="container-end">
         <%= f.submit "Check Basket", class:"container-basket"%>
       </div>
