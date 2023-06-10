@@ -1,7 +1,7 @@
 <div class="task-card-index mb-3">
   <div class="task-owner pt-3">
     <div class="task-owner-bg-color" style="background-color: <%= ["#ffc1c6", "#c59ffe", "#fed464", "#c1d9f9", "#d7fafb"].sample %>">
-      <%= link_to usertasks_path(params[:group_id], task.assigned_to_id) do %>
+      <%= link_to usertasks_group_task_path(params[:group_id], task) do %>
         <% if User.find(task.assigned_to_id).photo.attached? %>
           <%= cl_image_tag User.find(task.assigned_to_id).photo.key, class: "group-member-avatar" %>
         <% else %>
@@ -17,7 +17,7 @@
           <h6 style="font-weight: 400; color: #b8b8b8;">Created <%= timedifferece = TimeDifference.between(task.created_at, Time.now).in_hours.round %> Hours ago</h6>
         <% else %>
           <h6 style="font-weight: 400; color: #b8b8b8;">Created <%= timedifferece = TimeDifference.between(task.created_at, Time.now).in_days.round %> Days ago</h6>
-        <% end %> 
+        <% end %>
   </div>
 
   <div class="task-detail mb-3 mt-3">
@@ -27,7 +27,7 @@
 
   <div class="task-options mb-3">
     <div class="task-options-flex">
-     <%= link_to finish_task_group_task_path(params[:group_id], task), data: {turbo_method: :patch} do %>
+     <%= link_to usertasks_group_task_path(params[:group_id], task), data: {turbo_method: :patch} do %>
         <div class="button-circle" style="background-color:#bef8d5; margin-right: 10px">
           <i class="fa-solid fa-check"></i>
         </div>
