@@ -33,7 +33,7 @@ class ShoppingListsController < ApplicationController
   end
 
   def pre_selection
-    @shopping_list = ShoppingList.find(params[:shopping_list])
+    @shopping_list = ShoppingList.find_by(group_id: params[:group_id])
     @products = Product.all
     @group = Group.find(params[:group_id])
 

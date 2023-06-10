@@ -7,11 +7,18 @@
       </div>
 
 
-<ul>
+
   <% @bought_items.each do |bought_item| %>
-    <%= bought_item.product.name %>
+    <div class="bought-item-card mb-4">
+      <div class="bi-padding-wrapper">
+        <h3><%= bought_item.product.name %></h3>
+        <div class="bought-item-img-bg">
+          <%= image_tag "baguette(1).png" %>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+
 
 
 
