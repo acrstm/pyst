@@ -27,6 +27,12 @@ class GroupsController < ApplicationController
     @statusbar_done_width= (@finished_tasks * 100) / 3
     @stausbar_not_done_witdth = 100 -  @statusbar_done_width
 
+    @total = @bought_items.map do |item|
+          item.product.price
+    end.reduce(0){|a,b| a+b }
+
+
+
   end
 
   def new

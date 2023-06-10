@@ -5,6 +5,12 @@ class ShoppingListsController < ApplicationController
     @shopping_list = ShoppingList.find_by(group: @group)
     @bought_items = BoughtItem.where(shopping_list: @shopping_list)
 
+    @total = @bought_items.map do |bought_item|
+        bought_item.product.price
+    end.reduce(0){|a,b| a + b }
+
+
+
 
   end
 
