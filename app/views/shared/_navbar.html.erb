@@ -1,16 +1,31 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-bottom">
   <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand"  do %>
-         <i class="fa-solid fa-house fa-xl" style=color:#23c560></i>
-    <% end %>
 
-    <%= active_link_to root_path, active: :exclusive, class: "navbar-brand"  do %>
-     <i class="fa-solid fa-house fa-xl" style=color:#23c560></i>
-    <% end %>
 
-    <%= link_to groups_path, class: "navbar-brand"  do %>
-      <i class="fa-solid fa-people-group fa-xl" style=color:#23c560></i>
-    <% end %>
+
+  <% if params[:controller] == "pages" %>
+        <%= active_link_to root_path, active: true, class: "navbar-brand"  do %>
+        <i class="fa-solid fa-house fa-xl"></i>
+        <% end %>
+  <% else %>
+      <%= active_link_to root_path, active: false, class: "navbar-brand"  do %>
+        <i class="fa-solid fa-house fa-xl"></i>
+      <% end %>
+  <% end %>
+
+
+
+  <% if params[:controller] == "groups" %>
+      <%= active_link_to groups_path, active: true, class: "navbar-brand"  do %>
+        <i class="fa-solid fa-people-group fa-xl"></i>
+      <% end %>
+  <% else %>
+      <%= active_link_to groups_path, active: false, class: "navbar-brand"  do %>
+        <i class="fa-solid fa-people-group fa-xl"></i>
+      <% end %>
+  <% end %>
+
+
 
     <%# <%= link_to group_fixed_costs_path, class: "navbar-brand"  do %>
       <%# <i class="fa-solid fa-euro-sign fa-xl" style=color:#23c560></i>
@@ -23,21 +38,17 @@
       <span class="navbar-toggler-icon" ></span>
     </button> %>
         <% if user_signed_in? %>
-          <li class="nav-item dropup">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa-solid fa-user fa-xl" style=color:#23c560></i>
-          </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Dashboard", "#", class: "dropdown-item" %>
-              <%= link_to "Home", root_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
+          <%= active_link_to destroy_user_session_path,  data: {turbo_method: :delete}  do %>
+          <i class="fa-solid fa-person-walking-arrow-right fa-xl"></i>
+          <% end %>
         <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
+          <%= active_link_to new_user_session_path  do %>
+            <i class="fa-solid fa-arrow-right-to-bracket fa-xl"></i>
+          <% end %>
+
         <% end %>
+
+
 
   </div>
 </div>

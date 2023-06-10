@@ -27,7 +27,8 @@ Rails.application.routes.draw do
     resources :bought_items, only: [:index, :new, :create, :show]
     resources :fixed_costs, only: [:index, :new, :create, :show]
   end
-  get "options", to: "pages#options"
+  get "options", to: "pages#options", as: "options"
+  get "landing", to: "pages#landing"
   # get "usertasks/:id", to: "tasks#userstasks", as: "usertasks"
   # get "groups/:group_id", to: "shopping_lists#new_item", as: "newitem"
 end
