@@ -33,13 +33,25 @@
       <h6 class="mt-2">Completion</h6>
 
       <div class="completion">
-        <div class="statusbar-done"></div>
-        <div class="statusbar-left"></div>
+        <div class="statusbar-done" style="width: <%= @statusbar_done_width %>%"></div>
+        <div class="statusbar-left" style="width: <%= @stausbar_not_done_witdth %>%"></div>
       </div>
+
+
 
         <h6 class="mt-2">Latest Tasks</h6>
         <div>
-          <% @group_tasks.last(2).each do |task| %>
+        <% if @group_tasks.last(2).empty? %>
+
+        <div class="group-show-task-card">
+              <div class="group-task-show-icon-wrapper">
+                <i class="fa-regular fa-bell" style="color:#f16db8"></i>
+              </div>
+              <p>Create your Task</p>
+            </div>
+
+            <% else %>
+        <% @group_tasks.last(2).each do |task| %>
             <div class="group-show-task-card">
               <div class="group-task-show-icon-wrapper">
                 <i class="fa-regular fa-bell" style="color:#f16db8"></i>
@@ -47,6 +59,9 @@
               <p><%= task.name  %></p>
             </div>
           <% end %>
+
+        <% end %>
+
         </div>
 
     <div class="group-task-button-wrapper">
@@ -66,7 +81,7 @@
         </div>
 
         <div class="basket-wrapper">
-               <p> <%= @bought_items.length  %></p>
+               <%# <p> <%= @bought_items.length  %>
                 <i class="fa-solid fa-basket-shopping"></i>
         </div>
         <h6 class="mt-2">Latest Items</h6>
@@ -84,7 +99,7 @@
               <div class="group-task-show-icon-wrapper">
                 <i class="fa-regular fa-bell" style="color:#f16db8"></i>
               </div>
-              <p><%= task.name  %></p>
+              <%# <p><%= task.name  %>
 
             </div>
           <% end %>
@@ -127,7 +142,7 @@
               <div class="group-task-show-icon-wrapper">
                 <i class="fa-regular fa-bell" style="color:#f16db8"></i>
               </div>
-              <p><%= task.name  %></p>
+              <%# <p><%= task.name  %>
 
             </div>
           <% end %>

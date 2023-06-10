@@ -21,6 +21,12 @@ class GroupsController < ApplicationController
     @group_shopping_list = @group.shopping_list
     @bought_items = BoughtItem.where(shopping_list_id: @group_shopping_list.id )
 
+    @total_tasks = @group_tasks.length
+    @finished_tasks = @group_tasks.select{|task| task.done}.length
+
+    @statusbar_done_width= (@finished_tasks * 100) / 3
+    @stausbar_not_done_witdth = 100 -  @statusbar_done_width
+
   end
 
   def new
