@@ -77,11 +77,11 @@
        <div class="task-group-card">
         <div class="total-wrapper mt-3">
            <h6 class="">Total</h6>
-           <h3>232 €</h3>
+           <h3><%= @total %> €</h3>
         </div>
 
         <div class="basket-wrapper">
-               <%# <p> <%= @bought_items.length  %>
+                <p> <%= @bought_items.length  %>
                 <i class="fa-solid fa-basket-shopping"></i>
         </div>
         <h6 class="mt-2">Latest Items</h6>
@@ -94,12 +94,12 @@
               <p>Milk</p>
             </div>
         <% else %>
-          <%  @bought_items.last(2).each do |task| %>
+          <%  @bought_items.last(2).each do |item| %>
             <div class="group-show-task-card">
               <div class="group-task-show-icon-wrapper">
                 <i class="fa-regular fa-bell" style="color:#f16db8"></i>
               </div>
-              <%# <p><%= task.name  %>
+              <p><%= item.product.name %></p>
 
             </div>
           <% end %>
@@ -108,7 +108,7 @@
         </div>
 
       <div class="group-task-button-wrapper">
-        <%= link_to "Check out shopping", pre_selection_group_shopping_lists_path(@group), class:"btn btn-primary shopping-action " %>
+        <%= link_to "Check out shopping", group_shopping_lists_path(@group), class:"btn btn-primary shopping-action " %>
       </div>
 
     </div>

@@ -1,6 +1,6 @@
 .bought-item-card{
-  background-image: linear-gradient(to right bottom, #def2ff, #d6efff, #ceecfe, #c6e9fe, #bde6fd);
-  border-radius: 10px;
+  border-bottom: 1px solid #8ab1c6;
+
 
 .bi-padding-wrapper{
   padding: 10px;
@@ -22,8 +22,26 @@
   }
 }
 
+.bi-spacer-a{
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+}
+
 h3{
   color: #8ab1c6;
 
+  span {
+      font-size: 13px;
+      color: #8ab1c6;
+    }
+
+}
+
+h5 {
+  color: #8ab1c6;
+  font-weight: 400;
 }
 }
