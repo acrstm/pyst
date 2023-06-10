@@ -36,6 +36,9 @@ gem "redis", "~> 4.0"
 
 gem "faker"
 
+# Gem SVG inline
+gem "inline_svg"
+
 # upload images
 gem "cloudinary"
 
