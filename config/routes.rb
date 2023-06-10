@@ -10,20 +10,30 @@ Rails.application.routes.draw do
       get :join
       post :join_group
     end
+
+
+
+     resources :shopping_lists, only: [:index, :new, :create, :show] do
+        collection do
+        get :new_item
+        get :pre_selection
+        end
+
+        resources :bought_items, only: [:index, :new, :create, :show]
+
+      end
+
     resources :tasks, only: [:index, :new, :create, :show] do
       member do
         patch :progress
         patch :finish_task
 
       end
+
     end
 
-    resources :shopping_lists, only: [:index, :new, :create, :show] do
-      collection do
-        get :new_item
-      end
-    end
-    resources :bought_items, only: [:index, :new, :create, :show]
+
+
     resources :fixed_costs, only: [:index, :new, :create, :show]
   end
   get "options", to: "pages#options"
