@@ -3,7 +3,9 @@ class ShoppingListsController < ApplicationController
   def index
     @group = Group.find(params[:group_id])
     @shopping_list = ShoppingList.find_by(group: @group)
-    @products = Product.all
+    @bought_items = BoughtItem.where(shopping_list: @shopping_list)
+
+
   end
 
   def new

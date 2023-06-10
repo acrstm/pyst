@@ -1,4 +1,4 @@
-<div class="container-init">
+
       <div class="plus-wrapper">
         <%# <%= link_to group_bought_items_path do %>
         <%= link_to pre_selection_group_shopping_lists_path(@group, shopping_list: @shopping_list)  do %>
@@ -6,7 +6,12 @@
          <% end %>
       </div>
 
-</div>
+
+<ul>
+  <% @bought_items.each do |bought_item| %>
+    <%= bought_item.product.name %>
+  <% end %>
+</ul>
 
 
 
