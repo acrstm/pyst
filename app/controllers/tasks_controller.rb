@@ -31,14 +31,12 @@ class TasksController < ApplicationController
     # This for user task dashboard
   end
 
-  def userstasks
-    @group = Group.find(params[:id])
-
-    @user = User.find(params[:format])
-    @my_tasks = Task.where(assigned_to_id: @user).where(group_id: @group)
-
-    @user = User.find(params[:id])
-    @my_tasks = Task.where("deadline > ?", Date.today).where(assigned_to_id: @user).where(group_id: @group)
+  def usertasks
+    @group = Group.find(params[:group_id])
+    @task = Task.find(params[:id])
+    @owner_of_task = @task.assigned_to_id
+    @user = User.find(@owner_of_task)
+    @my_tasks = Task.where(assigned_to_id:@owner_of_task)
 
   end
 
@@ -66,7 +64,7 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
-    @group = Group.find(params[group_id])
+    @group = Group.find(params[:group_id])
     @users = MultipleGroup.where(group_id:  @group.id).pluck(:user_id)
   end
 

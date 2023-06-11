@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
     resources :tasks, only: [:index, :new, :create, :show] do
       member do
+        get :usertasks
         patch :progress
         patch :finish_task
 
@@ -36,7 +37,8 @@ Rails.application.routes.draw do
 
     resources :fixed_costs, only: [:index, :new, :create, :show]
   end
-  get "options", to: "pages#options"
-  get "usertasks/:id", to: "tasks#userstasks", as: "usertasks"
+  get "options", to: "pages#options", as: "options"
+  get "landing", to: "pages#landing"
+  # get "usertasks/:id", to: "tasks#userstasks", as: "usertasks"
   # get "groups/:group_id", to: "shopping_lists#new_item", as: "newitem"
 end
