@@ -1,4 +1,4 @@
-<h1 class="title mt-4 mb-3">Todos<br><span style="color: #c7c7c8;"><%= @group.name %></span></h1>
+<h1 class="title mt-4 mb-3"><br><span style="color: #c7c7c8;"><%= @group.name %></span></h1>
 
 
 
@@ -33,13 +33,25 @@
       <h6 class="mt-2">Completion</h6>
 
       <div class="completion">
-        <div class="statusbar-done"></div>
-        <div class="statusbar-left"></div>
+        <div class="statusbar-done" style="width: <%= @statusbar_done_width %>%"></div>
+        <div class="statusbar-left" style="width: <%= @stausbar_not_done_witdth %>%"></div>
       </div>
+
+
 
         <h6 class="mt-2">Latest Tasks</h6>
         <div>
-          <% @group_tasks.last(2).each do |task| %>
+        <% if @group_tasks.last(2).empty? %>
+
+        <div class="group-show-task-card">
+              <div class="group-task-show-icon-wrapper">
+                <i class="fa-regular fa-bell" style="color:#f16db8"></i>
+              </div>
+              <p>Create your Task</p>
+            </div>
+
+            <% else %>
+        <% @group_tasks.last(2).each do |task| %>
             <div class="group-show-task-card">
               <div class="group-task-show-icon-wrapper">
                 <i class="fa-regular fa-bell" style="color:#f16db8"></i>
@@ -47,6 +59,9 @@
               <p><%= task.name  %></p>
             </div>
           <% end %>
+
+        <% end %>
+
         </div>
 
     <div class="group-task-button-wrapper">
@@ -62,11 +77,11 @@
        <div class="task-group-card">
         <div class="total-wrapper mt-3">
            <h6 class="">Total</h6>
-           <h3>232 €</h3>
+           <h3><%= @total %> €</h3>
         </div>
 
         <div class="basket-wrapper">
-               <p> <%= @bought_items.length  %></p>
+                <p> <%= @bought_items.length  %>
                 <i class="fa-solid fa-basket-shopping"></i>
         </div>
         <h6 class="mt-2">Latest Items</h6>
@@ -79,12 +94,12 @@
               <p>Milk</p>
             </div>
         <% else %>
-          <%  @bought_items.last(2).each do |task| %>
+          <%  @bought_items.last(2).each do |item| %>
             <div class="group-show-task-card">
               <div class="group-task-show-icon-wrapper">
                 <i class="fa-regular fa-bell" style="color:#f16db8"></i>
               </div>
-              <p><%= task.name  %></p>
+              <p><%= item.product.name %></p>
 
             </div>
           <% end %>
@@ -127,7 +142,7 @@
               <div class="group-task-show-icon-wrapper">
                 <i class="fa-regular fa-bell" style="color:#f16db8"></i>
               </div>
-              <p><%= task.name  %></p>
+              <%# <p><%= task.name  %>
 
             </div>
           <% end %>

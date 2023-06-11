@@ -3,6 +3,13 @@ class GroupsController < ApplicationController
   def index
     group_ids = MultipleGroup.where(user:current_user).pluck(:group_id)
     @groups = Group.where(id: group_ids)
+
+    if params[:query].present?
+      @groups = Group.search_by_group_and_description(params[:query])
+    else
+      @groups = Group.where(id: group_ids)
+    end
+
   end
 
   def show
@@ -13,6 +20,18 @@ class GroupsController < ApplicationController
     @group_tasks = @group.tasks
     @group_shopping_list = @group.shopping_list
     @bought_items = BoughtItem.where(shopping_list_id: @group_shopping_list.id )
+
+    @total_tasks = @group_tasks.length
+    @finished_tasks = @group_tasks.select{|task| task.done}.length
+
+    @statusbar_done_width= (@finished_tasks * 100) / 3
+    @stausbar_not_done_witdth = 100 -  @statusbar_done_width
+
+    @total = @bought_items.map do |item|
+          item.product.price
+    end.reduce(0){|a,b| a+b }
+
+
 
   end
 
@@ -36,14 +55,17 @@ class GroupsController < ApplicationController
 
 
   def join
-    @groups = Group.where.not(id: current_user.group_id)
+    @groups = Group.all
   end
 
   def join_group
-    @group = Group.find(params[:user][:group_id])
-    current_user.group = @group
 
-    if current_user.save
+    @group = Group.find(params[:user][:group_id])
+    @multigroup = MultipleGroup.new()
+    @multigroup.group =  @group
+    @multigroup.user =  current_user
+
+    if @multigroup.save
 
       redirect_to group_path(@group)
     else
@@ -55,7 +77,7 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :description, :photo)
+    params.require(:group).permit(:name, :description, :passcode, :photo)
   end
 
 end

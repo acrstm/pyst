@@ -1,11 +1,15 @@
-<h1>Hello from Usertasks</h1>
+<h1><%= @user.first_name %>'s tasks</h1>
   <h1 class="mb-3" style="color:#adadaf">Upcoming Tasks</h1>
     <% @my_tasks.each do |task| %>
       <div class="task-card-index mb-3">
   <div class="task-owner pt-3">
     <div class="task-owner-bg-color" style="background-color: <%= ["#ffc1c6", "#c59ffe", "#fed464", "#c1d9f9", "#d7fafb"].sample %>">
-      <%= link_to usertasks_path(@group, @user) do %>
-      <%= image_tag "default-avatar.png" %>
+      <%= link_to usertasks_group_task_path(@group, task.assigned_to_id) do %>
+                <% if @user.photo.attached? %>
+                    <%= cl_image_tag @user.photo.key, class: "group-member-avatar" %>
+                    <% else %>
+                    <%= image_tag "default-avatar.png", class: "group-member-avatar" %>
+                <% end %>
       <% end %>
     </div>
     <h6><%= User.find(task.assigned_to_id).first_name %>'s Task</h6>

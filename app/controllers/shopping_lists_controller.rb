@@ -1,9 +1,17 @@
 class ShoppingListsController < ApplicationController
 
   def index
-    # raise
-    @shopping_list = ShoppingList.all
-    @products = Product.all
+    @group = Group.find(params[:group_id])
+    @shopping_list = ShoppingList.find_by(group: @group)
+    @bought_items = BoughtItem.where(shopping_list: @shopping_list)
+
+    @total = @bought_items.map do |bought_item|
+        bought_item.product.price
+    end.reduce(0){|a,b| a + b }
+
+
+
+
   end
 
   def new
@@ -13,7 +21,7 @@ class ShoppingListsController < ApplicationController
     @products = @selected_products.map do |id|
       Product.find(id)
     end
-    # raise
+
   end
 
   def new_item
@@ -28,6 +36,13 @@ class ShoppingListsController < ApplicationController
   def create
     @shopping_list = ShoppingList(shopping_params)
     # raise
+  end
+
+  def pre_selection
+    @shopping_list = ShoppingList.find_by(group_id: params[:group_id])
+    @products = Product.all
+    @group = Group.find(params[:group_id])
+
   end
 
   private
