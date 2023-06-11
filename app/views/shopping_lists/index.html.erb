@@ -6,6 +6,23 @@
          <% end %>
       </div>
 
+  <div class="container-form">
+    <%= simple_form_for :category, url: new_group_shopping_list_path(), method: :get do |f| %>
+      <%= f.input :category, legend_tag: false,
+                as: :check_boxes,
+                collection_wrapper_tag: 'div',
+                collection_wrapper_class: 'category-wrapper',
+                item_wrapper_class: 'category-item',
+                input_html: {class: 'category-selector rounded', multiple: true },
+              # collection: @product
+              collection: @products.map {|product|[product.name, product.id, style:"background-image:url(#{image_path "icons/png/#{product.name.downcase}.png"})"]} %>
+      <div class="container-end">
+        <%= f.submit "Check Basket", class:"container-basket"%>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 
 <div class="total-wrapper">
   <h1>Total</h1>
