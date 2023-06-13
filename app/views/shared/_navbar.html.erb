@@ -26,6 +26,26 @@
   <% end %>
 
 
+<% if MultipleGroup.find_by(user: current_user) %>
+  <% group_id = MultipleGroup.find_by(user: current_user).group_id %>
+
+              <% if params[:controller] == "pages" && params[:action] == "dashboard" %>
+      <%= active_link_to dashboard_group_path(group_id), active: true, class: "navbar-brand"  do %>
+       <i class="fa-solid fa-chart-pie"></i>
+      <% end %>
+  <% else %>
+      <%= active_link_to dashboard_group_path(group_id), active: false, class: "navbar-brand"  do %>
+        <i class="fa-solid fa-chart-pie"></i>
+      <% end %>
+  <% end %>
+
+<% end %>
+
+
+
+
+
+
 
     <%# <%= link_to group_fixed_costs_path, class: "navbar-brand"  do %>
       <%# <i class="fa-solid fa-euro-sign fa-xl" style=color:#23c560></i>

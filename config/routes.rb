@@ -7,8 +7,13 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :groups do
     collection do
+
       get :join
       post :join_group
+    end
+
+    member do
+      get :dashboard
     end
 
 
