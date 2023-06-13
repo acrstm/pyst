@@ -1,4 +1,6 @@
 
+  <div class="animated fadeInDown">
+
       <div class="plus-wrapper">
         <%# <%= link_to group_bought_items_path do %>
         <%= link_to pre_selection_group_shopping_lists_path(@group, shopping_list: @shopping_list)  do %>
@@ -6,29 +8,16 @@
          <% end %>
       </div>
 
-  <div class="container-form">
-    <%= simple_form_for :category, url: new_group_shopping_list_path(), method: :get do |f| %>
-      <%= f.input :category, legend_tag: false,
-                as: :check_boxes,
-                collection_wrapper_tag: 'div',
-                collection_wrapper_class: 'category-wrapper',
-                item_wrapper_class: 'category-item',
-                input_html: {class: 'category-selector rounded', multiple: true },
-              # collection: @product
-              collection: @products.map {|product|[product.name, product.id, style:"background-image:url(#{image_path "icons/png/#{product.name.downcase}.png"})"]} %>
-      <div class="container-end">
-        <%= f.submit "Check Basket", class:"container-basket"%>
-      </div>
-    <% end %>
-  </div>
-</div>
+
 
 
 <div class="total-wrapper">
   <h1>Total</h1>
   <h1 style="color:#adadad"><%= @total %> €</h1>
 </div>
+</div>
 
+<div class="animated fadeInUp">
   <% @bought_items.each do |bought_item| %>
     <div class="bought-item-card mb-4">
       <div class="bi-padding-wrapper">
@@ -36,10 +25,10 @@
         <div>
 
         <h3><%= bought_item.product.name %></h3>
-        <span style="color:#8ab1c6; position: relative;top: -5px;">bought by <%= bought_item.user.first_name %></span>
+        <span style="color:black; position: relative;top: -5px;font-weight:300;">bought by <%= bought_item.user.first_name %></span>
         </div>
        <div class="bought-item-img-bg">
-          <%= image_tag "baguette(1).png" %>
+          <%= image_tag "#{bought_item.product.name.downcase}.png" %>
         </div>
        </div>
         <div class="items-details-wrapper">
@@ -50,6 +39,7 @@
       </div>
     </div>
   <% end %>
+</div>
 
 
 

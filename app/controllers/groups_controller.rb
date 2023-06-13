@@ -23,6 +23,7 @@ class GroupsController < ApplicationController
 
     @total_tasks = @group_tasks.length
     @finished_tasks = @group_tasks.select{|task| task.done}.length
+    @not_finished_tasks = @group_tasks.reject{|task| task.done}.length
 
     @statusbar_done_width= (@finished_tasks * 100) / 3
     @stausbar_not_done_witdth = 100 -  @statusbar_done_width
@@ -73,6 +74,17 @@ class GroupsController < ApplicationController
     end
   end
 
+  def dashboard
+    @shopping_list = ShoppingList.find_by(group_id: params[:id])
+    @bought_items = BoughtItem.where(shopping_list: @shopping_list)
+    @total_products =  @bought_items.map{|item| item.product.price}.reduce(0){|a,b| a+b}
+    @find_users = MultipleGroup.where(group: params[:id]).pluck(:user_id)
+    @user_products = BoughtItem.where(user_id:@find_users)
+
+    # @sums = @user_products.group(@find_users).includes(:product).sum(:price)
+    @user_sums = @bought_items.group(:user_id).includes(:product).sum(:price)
+
+  end
 
   private
 

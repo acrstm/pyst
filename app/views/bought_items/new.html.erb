@@ -4,18 +4,21 @@
       <%# <h1>Shopping list Overview(New)</h1> %>
       <% @products.each do |product| %>
         <div class="container-banner" data-controller="quantity">
-          <div class="banner-item">
+
+
+          <div class="banner-item mb-4">
             <%= product.name %>
-            <span data-quantity-target="price"><%= product.price%></span>
-          </div>
-          <div class="icon-placeholder">
-            <i class="fa-regular fa-face-smile"></i>
+
+
+
+             <%= image_tag "#{product.name.downcase}.png" %>
           </div>
 
+           <span class="mb-3" data-quantity-target="price"><%= product.price%></span>
           <div class="price-banner">
-            <div class="total-banner">
-              <span style="width: 40px" data-quantity-target="total" class="badge badge-primary badge-pill">0</span>
-            </div>
+
+              <h3 data-quantity-target="total" class="badge badge-primary badge-pill">0</h3>
+
 
             <div class="cart-totals" >
               <input type="button" value="-" id="minus-button" for="quantity" data-quantity-target="minus">

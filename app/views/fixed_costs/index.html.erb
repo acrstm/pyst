@@ -1,18 +1,30 @@
 <h3>Expense Manager</h3>
 
-<div class="d-flex align-items-center flex-column">
+<div class="d-flex align-items-center flex-column mt-3 mb-5">
   <%= link_to new_group_fixed_cost_path do %>
     <i class="fa-solid fa-square-plus fa-2xl" style="color:#DF6C4F" class="align-center"></i>
   <% end %>
+</div>
 
-<h5>Individual Contributions</h5>
-  <div>
     <% @fixed_costs.each do |cost| %>
-      <div class="card-fixed-costs-individual-contributions">
-        <div class = "card-name"><%= cost.name %></div>
-        <div><%= cost.price %></div>
-        <div><%= cost.user_id %></div>
-      </div>
-    <% end %>
+         <div class="bought-item-card mb-4">
+      <div class="bi-padding-wrapper">
+      <div class="bi-spacer-a">
+        <div>
 
-<h5>General Costs</h5>
+        <h3><%= cost.name %></h3>
+        <span style="color:black; position: relative;top: -5px;font-weight:300;">paid by <%= cost.user.first_name %></span>
+        </div>
+       <div class="bought-item-img-bg">
+       <i class="fa-solid <%=  cost.create_fa_icon %>"></i>
+
+        </div>
+       </div>
+        <div class="items-details-wrapper">
+
+          <h5><%= cost.price %> €</h5>
+        </div>
+
+      </div>
+    </div>
+    <% end %>
