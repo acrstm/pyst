@@ -53,7 +53,12 @@ class GroupsController < ApplicationController
     redirect_to groups_path
   end
 
-
+def join_a_group
+    @groups = Group.all
+    if params[:query].present?
+      @groups = @groups.where(name: params[:query])
+    end
+end
 
   def join
     @groups = Group.all
