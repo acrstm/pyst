@@ -1,8 +1,13 @@
 
 
 <div class="container-init">
-      <div class="plus-wrapper">
+      <%# <div class="plus-wrapper"> %>
         <%# <%= link_to group_bought_items_path do %>
+        <div class="return-arrow" style = "margin-bottom: 80px">
+          <%= link_to group_shopping_lists_path do %>
+          <i class="fa-solid fa-chevron-left" style="color:#21C560; font-size: 35px; cursor: pointer;" class="align-center"></i>
+          <% end %>
+        <%# </div> %>
 
       </div>
   <div class="container-form">
@@ -14,7 +19,7 @@
                 item_wrapper_class: 'category-item',
                 input_html: {class: 'category-selector rounded', multiple: true },
               # collection: @product
-              collection: @products.map {|product|[product.name, product.id, style:"background-image:url(#{image_path "icons/#{product.name.downcase}.svg"})"]} %>
+              collection: @products.map {|product|[product.name, product.id, style:"background-image:url(#{image_path "icons/png/#{product.name.downcase}.png"})"]} %>
       <div class="container-end">
         <%= f.submit "Check Basket", class:"container-basket"%>
       </div>

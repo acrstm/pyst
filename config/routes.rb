@@ -35,15 +35,13 @@ Rails.application.routes.draw do
         patch :finish_task
 
       end
-
     end
-
-
 
     resources :fixed_costs, only: [:index, :new, :create, :show]
   end
   get "options", to: "pages#options", as: "options"
   get "landing", to: "pages#landing"
+  # get "groups/:id", to: "groups#show", as: "group"
   # get "usertasks/:id", to: "tasks#userstasks", as: "usertasks"
   # get "groups/:group_id", to: "shopping_lists#new_item", as: "newitem"
 end

@@ -1,4 +1,8 @@
-
+<div class="return-arrow">
+    <%= link_to group_path(params[:group_id]) do %>
+    <i class="fa-solid fa-chevron-left" style="color:#21C560; font-size: 35px; cursor: pointer;" class="align-center"></i>
+    <% end %>
+</div>
 <h1 class="title mt-5">TASKS</h1>
   <div class="mt-5 mb-5" style="width: 100%; text-align:center">
       <%= link_to new_group_task_path(params[:group_id]) do %>

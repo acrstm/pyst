@@ -1,4 +1,9 @@
-<h1 class="title mt-4 mb-3">👾<br>Create a new Task</h1>
+<div class="return-arrow">
+  <%= link_to group_tasks_path do %>
+  <i class="fa-solid fa-chevron-left" style="color:#21C560; font-size: 35px; cursor: pointer;" class="align-center"></i>
+  <% end %>
+</div>
+<h1 class="title">👾<br>Create a new Task</h1>
 
     <%= simple_form_for [@group, @task], class: "new-group" do |f| %>
       <%= f.input :name, placeholder: "e.g. Clean something", required: true%>
